@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9816c185cd71442b3bf0f8439e1b28, type: 3}
+  m_Name: Space Salad
+  m_EditorClassIdentifier: 
+  name: Space Salad
+  description: Like an edible galaxy
+  sprite: {fileID: 0}
+  ingredients:
+  - {fileID: 11400000, guid: 16b02ad33e5379e42ae0b6931da362a1, type: 2}
+  - {fileID: 11400000, guid: efdf4b4c05daeee408eaf7be0cfcebd0, type: 2}

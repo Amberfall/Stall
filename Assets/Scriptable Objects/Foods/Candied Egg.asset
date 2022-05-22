@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9816c185cd71442b3bf0f8439e1b28, type: 3}
+  m_Name: Candied Egg
+  m_EditorClassIdentifier: 
+  name: Candied Egg
+  description: hard on the outside, gooey on the inside.
+  sprite: {fileID: 0}
+  ingredients:
+  - {fileID: 11400000, guid: dea8c5bc6fbe29c498156d3122254730, type: 2}
+  - {fileID: 11400000, guid: f08fe6354ea20fb4e80d3c0805102733, type: 2}
