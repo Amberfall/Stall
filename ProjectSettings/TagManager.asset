@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1482437101
+    locked: 0
+  - name: Stall
+    uniqueID: 1687622425
+    locked: 0
+  - name: Customers
+    uniqueID: 1850175191
+    locked: 0
+  - name: UI
+    uniqueID: 3726170591
+    locked: 0
