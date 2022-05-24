@@ -50,6 +50,9 @@ TagManager:
   - name: Customers
     uniqueID: 1850175191
     locked: 0
+  - name: FX
+    uniqueID: 1226947743
+    locked: 0
   - name: UI
     uniqueID: 3726170591
     locked: 0
