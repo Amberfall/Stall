@@ -47,6 +47,9 @@ TagManager:
   - name: Stall
     uniqueID: 1687622425
     locked: 0
+  - name: Countertop
+    uniqueID: 1910196773
+    locked: 0
   - name: Customers
     uniqueID: 1850175191
     locked: 0

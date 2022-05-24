@@ -97,7 +97,10 @@ public class FoodComboBuilder : MonoBehaviour
                             {
                                 isARecipe = true;
                                 player.playerState = PlayerController.PlayerState.Cooking;
+                                arrowCooking.currentFood = food;
+                                arrowCooking.ActivateRandomArrow();
                                 Debug.Log("Cook " + food.name);
+                                ResetRecipeBuilder();
                             }
                         }
                     }
@@ -115,6 +118,7 @@ public class FoodComboBuilder : MonoBehaviour
                             {
                                 isARecipe = true;
                                 player.playerState = PlayerController.PlayerState.Cooking;
+                                arrowCooking.currentFood = food;
                                 arrowCooking.ActivateRandomArrow();
                                 Debug.Log("Cook " + food.name);
                                 ResetRecipeBuilder();

@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float movementSpeed;
+    [SerializeField] float timeToThrowAwayFood;
+    float throwTimer;
 
     [SerializeField] List<Transform> stallPositions = new List<Transform>();
 
@@ -22,14 +24,18 @@ public class PlayerController : MonoBehaviour
     public delegate void ReleasedSpace();
     public ReleasedSpace releasedSpace;
 
+    Stall stall;
 
     Vector3 refVelo;
-    int stallInt;
+    [HideInInspector] public int stallInt;
 
-    public enum PlayerState { Moving, ChooseAction, ChooseIngredient, Cooking};
+    public enum PlayerState { Moving, ChooseAction, ChooseIngredient, Cooking, ThrowingFood};
     public PlayerState playerState;
 
-
+    private void Awake()
+    {
+        stall = FindObjectOfType<Stall>();
+    }
 
     private void Update()
     {
@@ -46,6 +52,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case PlayerState.Cooking:
                 CookInput();
+                break;
+            case PlayerState.ThrowingFood:
+                ThrowAwayFood();
                 break;
             default:
                 break;
@@ -161,7 +170,15 @@ public class PlayerController : MonoBehaviour
 
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            playerState = PlayerState.ChooseAction;
+            if (stall.counterSpots[stallInt].HasFood())
+            {
+                throwTimer = timeToThrowAwayFood;
+                playerState = PlayerState.ThrowingFood;
+            }
+            else
+            {
+                playerState = PlayerState.ChooseAction;
+            }
         }
     }
 
@@ -170,4 +187,23 @@ public class PlayerController : MonoBehaviour
         transform.position = Vector3.SmoothDamp(transform.position, stallPositions[stallInt].position, ref refVelo, movementSpeed * Time.deltaTime);
     }
 
+
+    void ThrowAwayFood()
+    {
+        if(throwTimer > 0)
+        {
+            throwTimer -= Time.deltaTime;
+        }
+        else
+        {
+            stall.counterSpots[stallInt].RemoveFood();
+            playerState = PlayerState.Moving;
+        }
+
+        if (Keyboard.current.spaceKey.wasReleasedThisFrame)
+        {
+            playerState = PlayerState.Moving;
+        }
+
+    }
 }

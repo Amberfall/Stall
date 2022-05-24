@@ -5,6 +5,10 @@ using UnityEngine;
 public class ArrowCooking : MonoBehaviour
 {
 
+    public Food currentFood;
+
+    Stall stall;
+
     PlayerController player;
 
     [SerializeField] Transform arrowPositionParent;
@@ -14,6 +18,8 @@ public class ArrowCooking : MonoBehaviour
     private void Awake()
     {
         player = FindObjectOfType<PlayerController>();
+
+        stall = FindObjectOfType<Stall>();
 
         foreach (Transform child in arrowPositionParent)
         {
@@ -60,6 +66,7 @@ public class ArrowCooking : MonoBehaviour
                 arrowPositions[i].GetChild(3).GetChild(0).gameObject.SetActive(false);
             }
         }
+
     }
 
     int arrowCount;
@@ -78,9 +85,11 @@ public class ArrowCooking : MonoBehaviour
                     arrowCount++;
                     if(arrowCount == arrowPositions.Count)
                     {
+                        stall.counterSpots[player.stallInt].SetFood(currentFood);
                         player.playerState = PlayerController.PlayerState.Moving;
                         DeactivateArrows();
                         arrowCount = 0;
+                        currentFood = null;
                     }
                     hasFailed = false;
                 }
