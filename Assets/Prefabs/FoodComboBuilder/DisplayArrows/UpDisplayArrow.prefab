@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1622590420712518486}
   - component: {fileID: 1622590420712518481}
   m_Layer: 5
-  m_Name: UpArrow
+  m_Name: UpDisplayArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 15, y: 15}
+  m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1622590420712518487
 MonoBehaviour:
@@ -73,14 +73,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9583559, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cafc16189f045f445bad6f5eb9e13541, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9d94eacb15fc8064bb26a816a8c238f3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

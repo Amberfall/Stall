@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     public delegate void PressedIngredientArrow(ComboArrow.Direction direction);
     public PressedIngredientArrow pressedIngredientArrow;
 
+    public delegate void PressedCookingArrow(ComboArrow.Direction direction);
+    public PressedCookingArrow pressedCookingArrow;
+
+
     public delegate void ReleasedSpace();
     public ReleasedSpace releasedSpace;
 
@@ -22,7 +26,7 @@ public class PlayerController : MonoBehaviour
     Vector3 refVelo;
     int stallInt;
 
-    public enum PlayerState { Moving, ChooseAction, ChooseIngredient};
+    public enum PlayerState { Moving, ChooseAction, ChooseIngredient, Cooking};
     public PlayerState playerState;
 
 
@@ -39,6 +43,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case PlayerState.ChooseIngredient:
                 ChooseIngredientInput();
+                break;
+            case PlayerState.Cooking:
+                CookInput();
                 break;
             default:
                 break;
@@ -105,6 +112,34 @@ public class PlayerController : MonoBehaviour
             releasedSpace.Invoke();
         }
     }
+
+    void CookInput()
+    {
+        if (Keyboard.current.rightArrowKey.wasPressedThisFrame)
+        {
+            pressedCookingArrow.Invoke(ComboArrow.Direction.Right);
+        }
+
+        if (Keyboard.current.leftArrowKey.wasPressedThisFrame)
+        {
+            pressedCookingArrow.Invoke(ComboArrow.Direction.Left);
+        }
+
+        if (Keyboard.current.upArrowKey.wasPressedThisFrame)
+        {
+            pressedCookingArrow.Invoke(ComboArrow.Direction.Up);
+        }
+
+        if (Keyboard.current.downArrowKey.wasPressedThisFrame)
+        {
+            pressedCookingArrow.Invoke(ComboArrow.Direction.Down);
+        }
+
+        if (Keyboard.current.spaceKey.wasReleasedThisFrame)
+        {
+        }
+    }
+
 
     void MovementInput()
     {
