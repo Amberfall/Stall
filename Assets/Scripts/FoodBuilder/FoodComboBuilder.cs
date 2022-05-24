@@ -2,36 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class RecipeBuilder : MonoBehaviour
+public class FoodComboBuilder : MonoBehaviour
 {
 
     PlayerController player;
 
-    public List<Ingredient> currentIngredients = new List<Ingredient>();
+    CookAction currentCookAction;
+    Ingredient firstIngredient;
+    Ingredient secondsIngredient;
 
-    public int recipeNum;
-    public int ingredientCombo;
+    int recipeNum;
+    int ingredientCombo;
+
+    [SerializeField] List<Food> availableFoods = new List<Food>();
+
 
     [SerializeField] Sprite leftArrow;
     [SerializeField] Sprite rightArrow;
     [SerializeField] Sprite upArrow;
     [SerializeField] Sprite downArrow;
 
-    [SerializeField] List<ActionChooser> actionChoosers = new List<ActionChooser>();
-    [SerializeField] List<IngredientChooser> ingredientChoosers = new List<IngredientChooser>();
+    List<ActionChooser> actionChoosers = new List<ActionChooser>();
+    List<IngredientChooser> ingredientChoosers = new List<IngredientChooser>();
 
+    public Transform arrowPositions;
+    List<Image> arrowImages = new List<Image>();
 
-    [SerializeField] List<Image> arrowImages = new List<Image>();
-
+    public Transform textPositions;
+    List<TextMeshProUGUI> texts = new List<TextMeshProUGUI>();
 
     private void Awake()
     {
         player = FindObjectOfType<PlayerController>();
 
-        foreach (Transform child in transform)
+        foreach (Transform child in arrowPositions.transform)
         {
             arrowImages.Add(child.GetComponent<Image>());
+        }
+
+        foreach (Transform child in textPositions.transform)
+        {
+            texts.Add(child.GetComponent<TextMeshProUGUI>());
         }
 
         foreach (ActionChooser actionChooser in FindObjectsOfType<ActionChooser>())
@@ -43,6 +56,8 @@ public class RecipeBuilder : MonoBehaviour
         {
             ingredientChoosers.Add(ingredientChooser);
         }
+
+        ResetRecipeBuilder();
     }
 
     private void OnEnable()
@@ -63,11 +78,50 @@ public class RecipeBuilder : MonoBehaviour
 
     void ReleasedSpace()
     {
+        bool isARecipe = false;
+
         if(recipeNum >= 4)
         {
-            Debug.Log("Check if recipe and start coooookiing!");
+            if(secondsIngredient == null)
+            {
+                foreach (Food food in availableFoods)
+                {
+                    if(food.ingredients.Count == 1)
+                    {
+                        if (food.cookAction == currentCookAction)
+                        {
+                            if (food.ingredients[0] == firstIngredient)
+                            {
+                                isARecipe = true;
+                                Debug.Log("Cook " + food.name);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Food food in availableFoods)
+                {
+                    if (food.cookAction == currentCookAction)
+                    {
+                        if (food.ingredients[0] == firstIngredient)
+                        {
+                            if(food.ingredients[1] == secondsIngredient)
+                            {
+                                isARecipe = true;
+                                Debug.Log("Cook " + food.name);
+                            }
+                        }
+                    }
+                }
+            }
 
-            //Change this!
+            if (!isARecipe)
+            {
+                Debug.Log("This is not a recipe! You crazy!");
+            }
+
             ResetRecipeBuilder();
             player.playerState = PlayerController.PlayerState.Moving;
         }
@@ -78,7 +132,7 @@ public class RecipeBuilder : MonoBehaviour
         }
     }
 
-    void PressedActionArrow(ArrowTest.Direction direction)
+    void PressedActionArrow(ComboArrow.Direction direction)
     {
         foreach (ActionChooser actionChooser in actionChoosers)
         {
@@ -86,24 +140,36 @@ public class RecipeBuilder : MonoBehaviour
             {
                 switch (direction)
                 {
-                    case ArrowTest.Direction.Left:
+                    case ComboArrow.Direction.Left:
                         arrowImages[recipeNum].sprite = leftArrow;
                         recipeNum++;
+                        currentCookAction = actionChooser.cookAction;
+                        texts[0].text = actionChooser.cookAction.name;
+                        Debug.Log("CookAction is " + actionChooser.cookAction.name);
                         player.playerState = PlayerController.PlayerState.ChooseIngredient;
                         break;
-                    case ArrowTest.Direction.Right:
+                    case ComboArrow.Direction.Right:
                         arrowImages[recipeNum].sprite = rightArrow;
                         recipeNum++;
+                        currentCookAction = actionChooser.cookAction;
+                        texts[0].text = actionChooser.cookAction.name;
+                        Debug.Log("CookAction is " + actionChooser.cookAction.name);
                         player.playerState = PlayerController.PlayerState.ChooseIngredient;
                         break;
-                    case ArrowTest.Direction.Up:
+                    case ComboArrow.Direction.Up:
                         arrowImages[recipeNum].sprite = upArrow;
                         recipeNum++;
+                        currentCookAction = actionChooser.cookAction;
+                        texts[0].text = actionChooser.cookAction.name;
+                        Debug.Log("CookAction is " + actionChooser.cookAction.name);
                         player.playerState = PlayerController.PlayerState.ChooseIngredient;
                         break;
-                    case ArrowTest.Direction.Down:
+                    case ComboArrow.Direction.Down:
                         arrowImages[recipeNum].sprite = downArrow;
                         recipeNum++;
+                        currentCookAction = actionChooser.cookAction;
+                        texts[0].text = actionChooser.cookAction.name;
+                        Debug.Log("CookAction is " + actionChooser.cookAction.name);
                         player.playerState = PlayerController.PlayerState.ChooseIngredient;
                         break;
                     default:
@@ -114,7 +180,7 @@ public class RecipeBuilder : MonoBehaviour
     }
 
 
-    void PressedIngredientArrow(ArrowTest.Direction direction)
+    void PressedIngredientArrow(ComboArrow.Direction direction)
     {
         bool doReset = true;
 
@@ -129,19 +195,19 @@ public class RecipeBuilder : MonoBehaviour
                 {
                     switch (direction)
                     {
-                        case ArrowTest.Direction.Left:
+                        case ComboArrow.Direction.Left:
                             CheckIngredient(leftArrow, ingredientChooser);
                             doReset = false;
                             break;
-                        case ArrowTest.Direction.Right:
+                        case ComboArrow.Direction.Right:
                             CheckIngredient(rightArrow, ingredientChooser);
                             doReset = false;
                             break;
-                        case ArrowTest.Direction.Up:
+                        case ComboArrow.Direction.Up:
                             CheckIngredient(upArrow, ingredientChooser);
                             doReset = false;
                             break;
-                        case ArrowTest.Direction.Down:
+                        case ComboArrow.Direction.Down:
                             CheckIngredient(downArrow, ingredientChooser);
                             doReset = false;
                             break;
@@ -154,6 +220,7 @@ public class RecipeBuilder : MonoBehaviour
             if (doReset)
             {
                 ResetRecipeBuilder();
+                player.playerState = PlayerController.PlayerState.ChooseAction;
             }
         }
 
@@ -167,8 +234,20 @@ public class RecipeBuilder : MonoBehaviour
 
         if (ingredientCombo == 3)
         {
-            currentIngredients.Add(ingredChooser.ingredient);
-            Debug.Log("Added" + ingredChooser.ingredient.name);
+            if (firstIngredient == null)
+            {
+                firstIngredient = ingredChooser.ingredient;
+                texts[1].text = ingredChooser.ingredient.name;
+
+            }
+            else
+            {
+                secondsIngredient = ingredChooser.ingredient;
+                texts[2].text = ingredChooser.ingredient.name;
+
+            }
+
+            Debug.Log("Added " + ingredChooser.ingredient.name);
             ingredientCombo = 0;
             foreach (IngredientChooser ingredientChooser in ingredientChoosers)
             {
@@ -190,8 +269,13 @@ public class RecipeBuilder : MonoBehaviour
         }
         recipeNum = 0;
         ingredientCombo = 0;
-        currentIngredients.Clear();
-        player.playerState = PlayerController.PlayerState.ChooseAction;
+        currentCookAction = null;
+        firstIngredient = null;
+        secondsIngredient = null;
+        foreach (TextMeshProUGUI text in texts)
+        {
+            text.text = null;
+        }
     }
 
 }

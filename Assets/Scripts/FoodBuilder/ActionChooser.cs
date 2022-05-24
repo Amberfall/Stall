@@ -5,13 +5,15 @@ using UnityEngine;
 public class ActionChooser : MonoBehaviour
 {
 
-    List<ArrowTest> arrows = new List<ArrowTest>();
+    List<ComboArrow> arrows = new List<ComboArrow>();
+
+    public CookAction cookAction;
 
     private void Awake()
     {
         foreach (Transform child in transform)
         {
-            if(child.TryGetComponent(out ArrowTest arrow))
+            if(child.TryGetComponent(out ComboArrow arrow))
             {
                 arrows.Add(arrow);
             }
@@ -20,11 +22,11 @@ public class ActionChooser : MonoBehaviour
 
 
 
-    public bool CheckCombo(ArrowTest.Direction direction)
+    public bool CheckCombo(ComboArrow.Direction direction)
     {
-        List<ArrowTest> tempList = new List<ArrowTest>();
+        List<ComboArrow> tempList = new List<ComboArrow>();
 
-        foreach (ArrowTest arrow in arrows)
+        foreach (ComboArrow arrow in arrows)
         {
             if(arrow.direction == direction)
             {

@@ -15,6 +15,7 @@ MonoBehaviour:
   name: FlowerBun
   description: a sweet bun, decorated with a flower
   sprite: {fileID: 0}
+  cookAction: {fileID: 11400000, guid: 6cd7df2ebe83f6341af167bd10fa451c, type: 2}
   ingredients:
   - {fileID: 11400000, guid: f08fe6354ea20fb4e80d3c0805102733, type: 2}
   - {fileID: 11400000, guid: a0a9b66f94482aa43a9bd374b362d36b, type: 2}

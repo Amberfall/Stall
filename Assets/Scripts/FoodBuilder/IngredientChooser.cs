@@ -7,23 +7,23 @@ public class IngredientChooser : MonoBehaviour
 
     public Ingredient ingredient;
 
-    List<ArrowTest> arrows = new List<ArrowTest>();
+    List<ComboArrow> arrows = new List<ComboArrow>();
 
-    public int currentComboNum;
+    [HideInInspector] public int currentComboNum;
 
 
     private void Awake()
     {
         foreach (Transform child in transform)
         {
-            if(child.TryGetComponent(out ArrowTest arrow))
+            if(child.TryGetComponent(out ComboArrow arrow))
             {
                 arrows.Add(arrow);
             }
         }
     }
 
-    public bool CheckCombo(ArrowTest.Direction direction, int comboNum)
+    public bool CheckCombo(ComboArrow.Direction direction, int comboNum)
     {
         if(comboNum == currentComboNum + 1)
         {

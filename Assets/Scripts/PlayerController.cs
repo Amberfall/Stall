@@ -9,10 +9,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] List<Transform> stallPositions = new List<Transform>();
 
-    public delegate void PressedActionArrow(ArrowTest.Direction direction);
+    public delegate void PressedActionArrow(ComboArrow.Direction direction);
     public PressedActionArrow pressedActionArrow;
 
-    public delegate void PressedIngredientArrow(ArrowTest.Direction direction);
+    public delegate void PressedIngredientArrow(ComboArrow.Direction direction);
     public PressedIngredientArrow pressedIngredientArrow;
 
     public delegate void ReleasedSpace();
@@ -54,22 +54,22 @@ public class PlayerController : MonoBehaviour
     {
         if (Keyboard.current.rightArrowKey.wasPressedThisFrame)
         {
-            pressedActionArrow.Invoke(ArrowTest.Direction.Right);
+            pressedActionArrow.Invoke(ComboArrow.Direction.Right);
         }
 
         if (Keyboard.current.leftArrowKey.wasPressedThisFrame)
         {
-            pressedActionArrow.Invoke(ArrowTest.Direction.Left);
+            pressedActionArrow.Invoke(ComboArrow.Direction.Left);
         }
 
         if (Keyboard.current.upArrowKey.wasPressedThisFrame)
         {
-            pressedActionArrow.Invoke(ArrowTest.Direction.Up);
+            pressedActionArrow.Invoke(ComboArrow.Direction.Up);
         }
 
         if (Keyboard.current.downArrowKey.wasPressedThisFrame)
         {
-            pressedActionArrow.Invoke(ArrowTest.Direction.Down);
+            pressedActionArrow.Invoke(ComboArrow.Direction.Down);
         }
 
         if (Keyboard.current.spaceKey.wasReleasedThisFrame)
@@ -82,22 +82,22 @@ public class PlayerController : MonoBehaviour
     {
         if (Keyboard.current.rightArrowKey.wasPressedThisFrame)
         {
-            pressedIngredientArrow.Invoke(ArrowTest.Direction.Right);
+            pressedIngredientArrow.Invoke(ComboArrow.Direction.Right);
         }
 
         if (Keyboard.current.leftArrowKey.wasPressedThisFrame)
         {
-            pressedIngredientArrow.Invoke(ArrowTest.Direction.Left);
+            pressedIngredientArrow.Invoke(ComboArrow.Direction.Left);
         }
 
         if (Keyboard.current.upArrowKey.wasPressedThisFrame)
         {
-            pressedIngredientArrow.Invoke(ArrowTest.Direction.Up);
+            pressedIngredientArrow.Invoke(ComboArrow.Direction.Up);
         }
 
         if (Keyboard.current.downArrowKey.wasPressedThisFrame)
         {
-            pressedIngredientArrow.Invoke(ArrowTest.Direction.Down);
+            pressedIngredientArrow.Invoke(ComboArrow.Direction.Down);
         }
 
         if (Keyboard.current.spaceKey.wasReleasedThisFrame)
