@@ -114,15 +114,19 @@ public class FoodComboBuilder : MonoBehaviour
                     {
                         if (food.ingredients[0] == firstIngredient)
                         {
-                            if(food.ingredients[1] == secondsIngredient)
+                            if(food.ingredients.Count == 2)
                             {
-                                isARecipe = true;
-                                player.playerState = PlayerController.PlayerState.Cooking;
-                                arrowCooking.currentFood = food;
-                                arrowCooking.ActivateRandomArrow();
-                                Debug.Log("Cook " + food.name);
-                                ResetRecipeBuilder();
+                                if (food.ingredients[1] == secondsIngredient)
+                                {
+                                    isARecipe = true;
+                                    player.playerState = PlayerController.PlayerState.Cooking;
+                                    arrowCooking.currentFood = food;
+                                    arrowCooking.ActivateRandomArrow();
+                                    Debug.Log("Cook " + food.name);
+                                    ResetRecipeBuilder();
+                                }
                             }
+
                         }
                     }
                 }

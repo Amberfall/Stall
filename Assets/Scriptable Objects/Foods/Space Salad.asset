@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Space Salad
   description: Like an edible galaxy
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: e7117e1f2e557274797e7591d6b4ad1f, type: 3}
+  cookAction: {fileID: 11400000, guid: 6cd7df2ebe83f6341af167bd10fa451c, type: 2}
   ingredients:
   - {fileID: 11400000, guid: 16b02ad33e5379e42ae0b6931da362a1, type: 2}
   - {fileID: 11400000, guid: efdf4b4c05daeee408eaf7be0cfcebd0, type: 2}

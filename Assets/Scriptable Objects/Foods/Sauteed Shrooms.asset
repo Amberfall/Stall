@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Sauteed shrooms
   description: salty and chewy
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 12af984d3ee8c7a408d1e44f486822fd, type: 3}
+  cookAction: {fileID: 11400000, guid: 6cd7df2ebe83f6341af167bd10fa451c, type: 2}
   ingredients:
   - {fileID: 11400000, guid: 960ed4915292edf42aa427a9fd3e5747, type: 2}

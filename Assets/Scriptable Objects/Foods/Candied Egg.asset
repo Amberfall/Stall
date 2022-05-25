@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Candied Egg
   description: hard on the outside, gooey on the inside.
   sprite: {fileID: 21300000, guid: 4d4cfeb45cd4c5d4cb67f8acd2812038, type: 3}
-  cookAction: {fileID: 11400000, guid: d0e51e30482e09b4a89d5f5dcd02a066, type: 2}
+  cookAction: {fileID: 11400000, guid: e9e92a8c78fa0a146a339a45b05386c6, type: 2}
   ingredients:
-  - {fileID: 11400000, guid: dea8c5bc6fbe29c498156d3122254730, type: 2}
   - {fileID: 11400000, guid: f08fe6354ea20fb4e80d3c0805102733, type: 2}
+  - {fileID: 11400000, guid: dea8c5bc6fbe29c498156d3122254730, type: 2}

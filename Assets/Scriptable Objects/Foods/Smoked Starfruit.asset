@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Smoked Starfruit
   description: Juicy!
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 68df5aff7ff70a44eb1d15920eb71149, type: 3}
+  cookAction: {fileID: 11400000, guid: 327fe692a0df7af46896e1ff66afd19e, type: 2}
   ingredients:
   - {fileID: 11400000, guid: efdf4b4c05daeee408eaf7be0cfcebd0, type: 2}
