@@ -179,6 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4882278745854741095}
   - component: {fileID: 3522503072413566917}
+  - component: {fileID: 3560773506081002133}
   m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
@@ -194,7 +195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1551494924832791355}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.066, y: -0.436, z: 0}
+  m_LocalPosition: {x: -0.066, y: -0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -216,7 +217,7 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 1
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.637
+  m_FalloffIntensity: 0.8
   m_Color: {r: 0.69803923, g: 0.85098046, b: 0.25490198, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 0.2
@@ -664,6 +665,22 @@ MonoBehaviour:
   - {x: 0.4157348, y: -0.27778515, z: 0}
   - {x: 0.46193978, y: -0.19134171, z: 0}
   - {x: 0.49039266, y: -0.09754512, z: 0}
+--- !u!111 &3560773506081002133
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551494924832791355}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: c6a26781198af51419afe7821623c141, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: c6a26781198af51419afe7821623c141, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &2215800356833610319
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,6 +775,7 @@ GameObject:
   m_Component:
   - component: {fileID: 493753803099302286}
   - component: {fileID: 5672565030412287649}
+  - component: {fileID: 3045127855723221243}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -800,7 +818,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: 0b17d21c2f7ec9b4088e8a79281ce8e1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -832,6 +850,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3045127855723221243
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4312102446405815290}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 953dda7e7135f6148bcb30037b6e89c3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4730938132171043708
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3332396923259617751}
   - component: {fileID: 8213604376357053625}
+  - component: {fileID: 8600398560855501144}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -884,7 +923,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: 0b17d21c2f7ec9b4088e8a79281ce8e1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -916,6 +955,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8600398560855501144
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730938132171043708}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 953dda7e7135f6148bcb30037b6e89c3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5287834731810336990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,6 +1384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8411688949602698220}
   - component: {fileID: 1426325090346397850}
+  - component: {fileID: 4417113145691562836}
   m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
@@ -1340,7 +1400,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8559086729201353628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09, y: -0.38, z: 0}
+  m_LocalPosition: {x: -0.09, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1810,3 +1870,19 @@ MonoBehaviour:
   - {x: 0.4157348, y: -0.27778515, z: 0}
   - {x: 0.46193978, y: -0.19134171, z: 0}
   - {x: 0.49039266, y: -0.09754512, z: 0}
+--- !u!111 &4417113145691562836
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8559086729201353628}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: ba6ea716d5b5f524db97e832a7b8b1bb, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: ba6ea716d5b5f524db97e832a7b8b1bb, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
