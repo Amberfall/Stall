@@ -22,6 +22,7 @@ public class CustomerFedState : CustomerBaseState
             if(timeToEat > 1)
             {
                 customerStateManager.customer.onFed.Invoke();
+                customerStateManager.stall.RemoveMe(customerStateManager.customer);
                 leaving = true;
             }
         }
