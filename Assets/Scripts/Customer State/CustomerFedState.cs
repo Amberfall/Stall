@@ -21,24 +21,26 @@ public class CustomerFedState : CustomerBaseState
 
             if(timeToEat > 1)
             {
+                customerStateManager.customer.onFed.Invoke();
                 leaving = true;
             }
         }
         else
         {
-            customerStateManager.foodHolder.transform.localPosition =
-            Vector2.MoveTowards(customerStateManager.foodHolder.transform.localPosition, customerStateManager.foodHolderStartPos, 5 * Time.deltaTime);
+            customerStateManager.customer.foodHolder.transform.localPosition =
+            Vector2.MoveTowards(customerStateManager.customer.foodHolder.transform.localPosition, customerStateManager.customer.foodHolderStartPos, 5 * Time.deltaTime);
 
-            if((Vector2)customerStateManager.foodHolder.transform.localPosition == customerStateManager.foodHolderStartPos)
+            if((Vector2)customerStateManager.customer.foodHolder.transform.localPosition == customerStateManager.customer.foodHolderStartPos)
             {
                 hasGottenFood = true;
+                customerStateManager.customer.onEating.Invoke();
             }
         }
 
         if (leaving)
         {
-            customerStateManager.foodHolder.sprite = null;
-            customerStateManager.customer.transform.Translate(Vector2.right * Time.deltaTime * 5);
+            customerStateManager.customer.foodHolder.sprite = null;
+            customerStateManager.customer.transform.Translate(Vector2.right * Time.deltaTime * 3);
         }
 
     }

@@ -9,6 +9,7 @@ public class CustomerUnseatedState : CustomerBaseState
     public override void EnterState(CustomerStateManager customerStateManager)
     {
         Debug.Log("new customer approaches...");
+        customerStateManager.customer.onUnseated.Invoke();
         timeWaiting = 0;      
     }
     public override void UpdateState(CustomerStateManager customerStateManager)

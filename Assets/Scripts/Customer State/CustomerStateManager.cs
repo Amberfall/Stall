@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CustomerStateManager : MonoBehaviour
 {
+
     CustomerBaseState currentState;
     [HideInInspector] public Customer customer;
     public CustomerUnseatedState UnseatedState = new CustomerUnseatedState();
@@ -12,14 +13,10 @@ public class CustomerStateManager : MonoBehaviour
     public CustomerLostState LostState = new CustomerLostState();
     [HideInInspector] public Stall stall;
 
-    public SpriteRenderer foodHolder;
-    [HideInInspector] public Vector2 foodHolderStartPos;
-
     void Awake()
     {
         stall = FindObjectOfType<Stall>();
         customer = GetComponent<Customer>();
-        foodHolderStartPos = foodHolder.transform.localPosition;
     }
 
     void Start()
