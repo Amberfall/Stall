@@ -1282,6 +1282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9461f997f564fda4fb114750399b1527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onChop: {fileID: 11400000, guid: 88ba1e1aa58cf7e45af4d0701bfd6e34, type: 2}
+  onFry: {fileID: 11400000, guid: eea3512708b22d04582095dd78b4bb81, type: 2}
+  onBake: {fileID: 11400000, guid: a1005def335632442a805f6f41200999, type: 2}
   availableFoods:
   - {fileID: 11400000, guid: 7f59d014b0c0af64e83b11277dee4802, type: 2}
   - {fileID: 11400000, guid: 7305209992fdaf744ac54f3a9d85e1d1, type: 2}
@@ -1294,6 +1297,9 @@ MonoBehaviour:
   downArrow: {fileID: 21300000, guid: 1591af4b47a051b4e9d4e5170c3b8609, type: 3}
   arrowPositions: {fileID: 1622833411}
   textPositions: {fileID: 1566412686}
+  chop: {fileID: 11400000, guid: 6cd7df2ebe83f6341af167bd10fa451c, type: 2}
+  fry: {fileID: 11400000, guid: e9e92a8c78fa0a146a339a45b05386c6, type: 2}
+  bake: {fileID: 11400000, guid: 327fe692a0df7af46896e1ff66afd19e, type: 2}
 --- !u!1 &324069325
 GameObject:
   m_ObjectHideFlags: 0
@@ -3137,7 +3143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -103, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &637847233
@@ -10082,10 +10088,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3042012441689130974, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
-      propertyPath: movementSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3042012441689130974, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
       propertyPath: stallPositions.Array.data[0]
       value: 
       objectReference: {fileID: 389438041}
@@ -10107,7 +10109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7021153429203306797, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.83
+      value: -1.35
       objectReference: {fileID: 0}
     - target: {fileID: 7021153429203306797, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10147,31 +10149,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
---- !u!1 &303227736113519203 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3000138152835438648, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
-  m_PrefabInstance: {fileID: 303227736113519202}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &303227736113519204
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303227736113519203}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b69bcb71c2eda3b408274eaa38ebb561, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &379477483865558208
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,11 @@ using TMPro;
 public class FoodComboBuilder : MonoBehaviour
 {
 
+    [SerializeField] GameEvent onChop;
+    [SerializeField] GameEvent onFry;
+    [SerializeField] GameEvent onBake;
+
+
     PlayerController player;
 
     ArrowCooking arrowCooking;
@@ -19,7 +24,6 @@ public class FoodComboBuilder : MonoBehaviour
     int ingredientCombo;
 
     [SerializeField] List<Food> availableFoods = new List<Food>();
-
 
     [SerializeField] Sprite leftArrow;
     [SerializeField] Sprite rightArrow;
@@ -161,6 +165,7 @@ public class FoodComboBuilder : MonoBehaviour
                         recipeNum++;
                         currentCookAction = actionChooser.cookAction;
                         texts[0].text = actionChooser.cookAction.name;
+                        ActionEventCall(actionChooser);
                         Debug.Log("CookAction is " + actionChooser.cookAction.name);
                         player.playerState = PlayerController.PlayerState.ChooseIngredient;
                         break;
@@ -170,6 +175,7 @@ public class FoodComboBuilder : MonoBehaviour
                         recipeNum++;
                         currentCookAction = actionChooser.cookAction;
                         texts[0].text = actionChooser.cookAction.name;
+                        ActionEventCall(actionChooser);
                         Debug.Log("CookAction is " + actionChooser.cookAction.name);
                         player.playerState = PlayerController.PlayerState.ChooseIngredient;
                         break;
@@ -180,6 +186,7 @@ public class FoodComboBuilder : MonoBehaviour
                         currentCookAction = actionChooser.cookAction;
                         texts[0].text = actionChooser.cookAction.name;
                         Debug.Log("CookAction is " + actionChooser.cookAction.name);
+                        ActionEventCall(actionChooser);
                         player.playerState = PlayerController.PlayerState.ChooseIngredient;
                         break;
                     case ComboArrow.Direction.Down:
@@ -189,6 +196,7 @@ public class FoodComboBuilder : MonoBehaviour
                         currentCookAction = actionChooser.cookAction;
                         texts[0].text = actionChooser.cookAction.name;
                         Debug.Log("CookAction is " + actionChooser.cookAction.name);
+                        ActionEventCall(actionChooser);
                         player.playerState = PlayerController.PlayerState.ChooseIngredient;
                         break;
                     default:
@@ -298,4 +306,28 @@ public class FoodComboBuilder : MonoBehaviour
         }
     }
 
+    [Header("CookActions")]
+    [SerializeField] CookAction chop;
+    [SerializeField] CookAction fry;
+    [SerializeField] CookAction bake;
+
+    void ActionEventCall(ActionChooser actionChooser)
+    {
+        if(actionChooser.cookAction == chop)
+        {
+            onChop.Raise();
+        }
+
+        if (actionChooser.cookAction == fry)
+        {
+            onFry.Raise();
+        }
+
+        if (actionChooser.cookAction == bake)
+        {
+            onBake.Raise();
+        }
+    }
+
 }
+

@@ -5,6 +5,16 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] GameEvent onNormalMovement;
+    [SerializeField] GameEvent onChoosingCookAction;
+    [SerializeField] GameEvent onChoosingIngredients;
+    [SerializeField] GameEvent onCooking;
+    [SerializeField] GameEvent onCanThrowAway;
+    [SerializeField] GameEvent onThrowingAway;
+
+
+
+
     [SerializeField] float movementSpeed;
     [SerializeField] float timeToThrowAwayFood;
     float throwTimer;
@@ -35,6 +45,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         stall = FindObjectOfType<Stall>();
+        stallInt = 1;
     }
 
     private void Update()
@@ -63,7 +74,126 @@ public class PlayerController : MonoBehaviour
 
         Movement();
 
+        PlayerStateEvents();
+    }
 
+    bool isMoving;
+    bool isChoosingAction;
+    bool isChoosingIngredient;
+    bool isCooking;
+    bool isThrowingFood;
+    bool canThrowFood;
+    bool canThrowFoodEventBool;
+    void PlayerStateEvents()
+    {
+        switch (playerState)
+        {
+            case PlayerState.Moving:
+                if (canThrowFood)
+                {
+                    CanThrowFoodEventCall();
+                }
+                else
+                {
+                    IsMovingEventCall();
+                }
+                break;
+            case PlayerState.ChooseAction:
+                IsChooseActionEventCall();
+                break;
+            case PlayerState.ChooseIngredient:
+                IsChoosingIngredientEventCall();
+                break;
+            case PlayerState.Cooking:
+                IsCookingEventCall();
+                break;
+            case PlayerState.ThrowingFood:
+                IsThrowingFoodEventCall();
+                break;
+            default:
+                break;
+        }
+    }
+
+
+    void IsMovingEventCall()
+    {
+        if(!isMoving)
+        {
+            onNormalMovement.Raise();
+            isMoving = true;
+        }
+        isChoosingAction = false;
+        isChoosingIngredient = false;
+        isCooking = false;
+        isThrowingFood = false;
+        canThrowFoodEventBool = false;
+    }
+    void IsChoosingIngredientEventCall()
+    {
+        if (!isChoosingIngredient)
+        {
+            onChoosingIngredients.Raise();
+            isChoosingIngredient = true;
+        }
+        isChoosingAction = false;
+        isMoving = false;
+        isCooking = false;
+        isThrowingFood = false;
+        canThrowFoodEventBool = false;
+    }
+    void IsChooseActionEventCall()
+    {
+        if (!isChoosingAction)
+        {
+            onChoosingCookAction.Raise();
+            isChoosingAction = true;
+        }
+        isMoving = false;
+        isChoosingIngredient = false;
+        isCooking = false;
+        isThrowingFood = false;
+        canThrowFoodEventBool = false;
+    }
+    void IsCookingEventCall()
+    {
+        if (!isCooking)
+        {
+            onCooking.Raise();
+            isCooking = true;
+        }
+        isChoosingAction = false;
+        isChoosingIngredient = false;
+        isMoving = false;
+        isThrowingFood = false;
+        canThrowFoodEventBool = false;
+    }
+    void IsThrowingFoodEventCall()
+    {
+        if (!isThrowingFood)
+        {
+            onThrowingAway.Raise();
+            isThrowingFood = true;
+        }
+        isChoosingAction = false;
+        isChoosingIngredient = false;
+        isCooking = false;
+        isMoving = false;
+        canThrowFoodEventBool = false;
+    }
+    void CanThrowFoodEventCall()
+    {
+        if (!canThrowFoodEventBool)
+        {
+            onCanThrowAway.Raise();
+            canThrowFoodEventBool = true;
+        }
+
+        isChoosingAction = false;
+        isChoosingIngredient = false;
+        isCooking = false;
+        isMoving = false;
+        isThrowingFood = false;
     }
 
     void ChooseActionInput()
@@ -149,7 +279,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     void MovementInput()
     {
         if (Keyboard.current.rightArrowKey.wasPressedThisFrame)
@@ -180,6 +309,16 @@ public class PlayerController : MonoBehaviour
                 playerState = PlayerState.ChooseAction;
             }
         }
+
+        if (stall.counterSpots[stallInt].HasFood())
+        {
+            canThrowFood = true;
+        }
+        else
+        {
+            canThrowFood = false;
+        }
+
     }
 
     void Movement()

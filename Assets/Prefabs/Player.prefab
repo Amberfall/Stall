@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5540807008924674702}
   - component: {fileID: 244082892605926356}
+  - component: {fileID: 303227736113519204}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -84,6 +85,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &303227736113519204
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3000138152835438648}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b69bcb71c2eda3b408274eaa38ebb561, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5512151517462257996
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +150,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce0661d7d8362f45b1d91bba18a7327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
+  onNormalMovement: {fileID: 11400000, guid: 0b38dba5ac44b1f4b8c7fe8030c23607, type: 2}
+  onChoosingCookAction: {fileID: 11400000, guid: 3b9bd94a4c83a334fb4f7b8f25052e76, type: 2}
+  onChoosingIngredients: {fileID: 11400000, guid: 0552a7beaf070cf44943b68e8a85ac32, type: 2}
+  onCooking: {fileID: 11400000, guid: b20c2a78b8280ac46be750398bcd0957, type: 2}
+  onCanThrowAway: {fileID: 11400000, guid: 430e314b3abebb04da3059999f3bb50e, type: 2}
+  onThrowingAway: {fileID: 11400000, guid: 3739588052be2fa499b256dd0ae07e03, type: 2}
+  movementSpeed: 20
   timeToThrowAwayFood: 1
   stallPositions:
   - {fileID: 0}
