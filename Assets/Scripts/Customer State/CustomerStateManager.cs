@@ -5,16 +5,21 @@ using UnityEngine;
 public class CustomerStateManager : MonoBehaviour
 {
     CustomerBaseState currentState;
-    public Customer customer;
+    [HideInInspector] public Customer customer;
     public CustomerUnseatedState UnseatedState = new CustomerUnseatedState();
     public CustomerSeatedState SeatedState = new CustomerSeatedState();
     public CustomerFedState FedState = new CustomerFedState();
     public CustomerLostState LostState = new CustomerLostState();
-    public Stall stall;
+    [HideInInspector] public Stall stall;
+
+    public SpriteRenderer foodHolder;
+    [HideInInspector] public Vector2 foodHolderStartPos;
+
     void Awake()
     {
         stall = FindObjectOfType<Stall>();
         customer = GetComponent<Customer>();
+        foodHolderStartPos = foodHolder.transform.localPosition;
     }
 
     void Start()

@@ -20,5 +20,10 @@ public class Customer : MonoBehaviour
     {
         return waitTime;
     }
+    public Ingredient GetIngredient()
+    {
+        return missingIngredient;
+    }
+
 
 }
