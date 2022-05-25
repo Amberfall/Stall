@@ -4,11 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 public class Customer : MonoBehaviour
 {
-    public UnityEvent onUnseated;
-    public UnityEvent onSeated;
-    public UnityEvent onEating;
-    public UnityEvent onFed;
-    public UnityEvent onLost;
 
     [SerializeField] float waitTime = 10f; //how long the customer will wait before leaving
     float timeWaiting; //how long the customer has been waiting
@@ -17,6 +12,14 @@ public class Customer : MonoBehaviour
 
     public SpriteRenderer foodHolder;
     [HideInInspector] public Vector2 foodHolderStartPos;
+
+    public UnityEvent onUnseated;
+    public UnityEvent onSeated;
+    public UnityEvent onEating;
+    public UnityEvent onFed;
+    public UnityEvent onLost;
+
+
 
     private void Awake()
     {
