@@ -87,7 +87,7 @@ public class FoodComboBuilder : MonoBehaviour
     {
         bool isARecipe = false;
 
-        if(recipeNum >= 4)
+        if(recipeNum >= 3)
         {
             if(secondsIngredient == null)
             {
@@ -260,7 +260,7 @@ public class FoodComboBuilder : MonoBehaviour
         arrowImages[recipeNum - 1].sprite = spriteDir;
         arrowImages[recipeNum - 1].gameObject.SetActive(true);
 
-        if (ingredientCombo == 3)
+        if (ingredientCombo == 2)
         {
             if (firstIngredient == null)
             {
