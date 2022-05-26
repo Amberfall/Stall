@@ -53,6 +53,8 @@ MonoBehaviour:
   walkSpeed: 3
   foodHolder: {fileID: 3014129581526594765}
   foodHolderStartPos: {x: 0, y: 0}
+  wanderAroundArea: {fileID: 0}
+  spriteSpriteRenderer: {fileID: 438960423015109024}
   onUnseated:
     m_PersistentCalls:
       m_Calls: []
@@ -106,7 +108,7 @@ GameObject:
   - component: {fileID: 438960423015109024}
   - component: {fileID: 1957151578312447089}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

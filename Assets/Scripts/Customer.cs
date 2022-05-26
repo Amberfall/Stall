@@ -13,6 +13,10 @@ public class Customer : MonoBehaviour
     public SpriteRenderer foodHolder;
     [HideInInspector] public Vector2 foodHolderStartPos;
 
+    [HideInInspector] public BoxCollider2D wanderAroundArea;
+
+    public SpriteRenderer spriteSpriteRenderer;
+
     public UnityEvent onUnseated;
     public UnityEvent onSeated;
     public UnityEvent onEating;
@@ -23,7 +27,13 @@ public class Customer : MonoBehaviour
 
     private void Awake()
     {
+        wanderAroundArea = FindObjectOfType<WanderAroundArea>().GetComponent<BoxCollider2D>();
         foodHolderStartPos = foodHolder.transform.localPosition;
+    }
+
+    private void Update()
+    {
+        spriteSpriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
     }
 
     public void AddTimeWaiting(float time) //increase timer for how long customer has been waiting

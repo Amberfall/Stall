@@ -6,6 +6,8 @@ public class CustomerSpawner : MonoBehaviour
 {
     [SerializeField] List<GameObject> customers;
 
+    [SerializeField] List<Transform> randomSpawnPositions;
+
     [SerializeField] float minSpawnTime = 15f;
     [SerializeField] float maxSpawnTime = 400f;
     float timeToSpawn;
@@ -18,13 +20,14 @@ public class CustomerSpawner : MonoBehaviour
     {
         if(timeToSpawn <= 0)
         {
-            Instantiate(ChooseRandomCustomer(),transform.position, Quaternion.identity);
+            Instantiate(ChooseRandomCustomer(), ChooseRandomSpawnPosition().position, Quaternion.identity);
             ResetSpawnTime();
         }
         else
         {
             timeToSpawn -= Time.deltaTime;
         }
+
     }
     public void ResetSpawnTime()
     {
@@ -36,4 +39,11 @@ public class CustomerSpawner : MonoBehaviour
         return customers[randomIndex];
         
     }
+
+    Transform ChooseRandomSpawnPosition()
+    {
+        int randomIndex = Random.Range(0, randomSpawnPositions.Count);
+        return randomSpawnPositions[randomIndex];
+    }
+
 }
