@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8693018712950609971}
   - component: {fileID: 3935738274669063395}
   m_Layer: 0
-  m_Name: Lost Soul
+  m_Name: Lost Soul(Blueberry)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65fcb8f641e4275428264dbb4f4b2df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 10
-  missingIngredient: {fileID: 11400000, guid: 960ed4915292edf42aa427a9fd3e5747, type: 2}
+  waitTime: 120
+  missingIngredient: {fileID: 11400000, guid: 16b02ad33e5379e42ae0b6931da362a1, type: 2}
   walkSpeed: 3
   foodHolder: {fileID: 3014129581526594765}
   foodHolderStartPos: {x: 0, y: 0}

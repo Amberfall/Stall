@@ -44,7 +44,7 @@ public class Stall : MonoBehaviour
             if(stools[i].GetCustomer() == customer)
             {
                 stools[i].RemoveCustomer();
-                Debug.Log("customer from seat " + i + 1 + " is leaving.");
+                Debug.Log("customer from seat " + (i + 1) + " is leaving.");
             }
         }
     }

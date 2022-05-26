@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: FlowerBun
   description: a sweet bun, decorated with a flower
-  sprite: {fileID: 21300000, guid: 0a8834e03f916934791ac3398203b512, type: 3}
+  sprite: {fileID: 21300000, guid: c859258cad576054b9d57d068cbe04a9, type: 3}
   cookAction: {fileID: 11400000, guid: 327fe692a0df7af46896e1ff66afd19e, type: 2}
   ingredients:
   - {fileID: 11400000, guid: a0a9b66f94482aa43a9bd374b362d36b, type: 2}
