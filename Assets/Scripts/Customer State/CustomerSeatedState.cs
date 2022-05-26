@@ -8,13 +8,13 @@ public class CustomerSeatedState : CustomerBaseState
     float timeWaiting;
     public override void EnterState(CustomerStateManager customerStateManager)
     {
-        customerStateManager.customer.spriteSpriteRenderer.flipX = false;
         customerStateManager.customer.onSeated.Invoke();
 
         Debug.Log("I have sat down!");
     }
     public override void UpdateState(CustomerStateManager customerStateManager)
     {
+        customerStateManager.customer.spriteSpriteRenderer.flipX = false;
         timeWaiting += Time.deltaTime;
 
         if (timeWaiting >= customerStateManager.customer.GetWaitTime())
