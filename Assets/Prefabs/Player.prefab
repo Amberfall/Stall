@@ -278,6 +278,7 @@ MonoBehaviour:
   onThrowingAway: {fileID: 11400000, guid: 3739588052be2fa499b256dd0ae07e03, type: 2}
   onStoppedMoving: {fileID: 11400000, guid: af8c621d73f405949bcb6e5b243dc1b6, type: 2}
   onStartMoving: {fileID: 11400000, guid: 233f2e262db653743b8cde0fdcab4bce, type: 2}
+  onFailedArrowCooking: {fileID: 11400000, guid: 7cd6716150365e44797ce71160071419, type: 2}
   spriteSpriteRenderer: {fileID: 244082892605926356}
   movementSpeed: 10
   timeToThrowAwayFood: 1

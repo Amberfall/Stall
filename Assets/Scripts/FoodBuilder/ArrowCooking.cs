@@ -98,6 +98,7 @@ public class ArrowCooking : MonoBehaviour
 
         if (hasFailed)
         {
+            player.onFailedArrowCooking.Raise();
             DeactivateArrows();
             ActivateRandomArrow();
             arrowCount = 0;

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameEvent onThrowingAway;
     [SerializeField] GameEvent onStoppedMoving;
     [SerializeField] GameEvent onStartMoving;
+    public GameEvent onFailedArrowCooking;
 
     [SerializeField] SpriteRenderer spriteSpriteRenderer;
 
