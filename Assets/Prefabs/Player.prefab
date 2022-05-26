@@ -276,7 +276,10 @@ MonoBehaviour:
   onCooking: {fileID: 11400000, guid: b20c2a78b8280ac46be750398bcd0957, type: 2}
   onCanThrowAway: {fileID: 11400000, guid: 430e314b3abebb04da3059999f3bb50e, type: 2}
   onThrowingAway: {fileID: 11400000, guid: 3739588052be2fa499b256dd0ae07e03, type: 2}
-  movementSpeed: 20
+  onStoppedMoving: {fileID: 11400000, guid: af8c621d73f405949bcb6e5b243dc1b6, type: 2}
+  onStartMoving: {fileID: 11400000, guid: 233f2e262db653743b8cde0fdcab4bce, type: 2}
+  spriteSpriteRenderer: {fileID: 244082892605926356}
+  movementSpeed: 10
   timeToThrowAwayFood: 1
   stallPositions:
   - {fileID: 0}
@@ -341,6 +344,6 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Walk_R
+          m_StringArgument: Idle_R
           m_BoolArgument: 0
         m_CallState: 2

@@ -10,6 +10,7 @@ public class CustomerLostState : CustomerBaseState
     }
     public override void UpdateState(CustomerStateManager customerStateManager)
     {
+        customerStateManager.stall.RemoveMe(customerStateManager.customer);
         customerStateManager.customer.transform.Translate(Vector2.down * Time.deltaTime * 3);
 
     }

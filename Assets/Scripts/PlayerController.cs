@@ -11,9 +11,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameEvent onCooking;
     [SerializeField] GameEvent onCanThrowAway;
     [SerializeField] GameEvent onThrowingAway;
+    [SerializeField] GameEvent onStoppedMoving;
+    [SerializeField] GameEvent onStartMoving;
 
-
-
+    [SerializeField] SpriteRenderer spriteSpriteRenderer;
 
     [SerializeField] float movementSpeed;
     [SerializeField] float timeToThrowAwayFood;
@@ -285,6 +286,8 @@ public class PlayerController : MonoBehaviour
         {
             if (stallInt < 2)
             {
+                spriteSpriteRenderer.flipX = false;
+                onStartMoving.Raise();
                 stallInt++;
             }
         }
@@ -293,6 +296,8 @@ public class PlayerController : MonoBehaviour
         {
             if (stallInt > 0)
             {
+                spriteSpriteRenderer.flipX = true;
+                onStartMoving.Raise();
                 stallInt--;
             }
         }
@@ -321,9 +326,29 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
+    bool hasStopped;
     void Movement()
     {
-        transform.position = Vector3.SmoothDamp(transform.position, stallPositions[stallInt].position, ref refVelo, movementSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, stallPositions[stallInt].position, movementSpeed * Time.deltaTime);
+
+        if(transform.position == stallPositions[stallInt].position)
+        {
+            if (!hasStopped)
+            {
+                if(playerState == PlayerState.Moving || playerState == PlayerState.ChooseAction)
+                {
+                    onStoppedMoving.Raise();
+                    hasStopped = true;
+                }
+            }
+        }
+        else
+        {
+            hasStopped = false;
+        }
+
+        //transform.position = Vector3.SmoothDamp(transform.position, stallPositions[stallInt].position, ref refVelo, movementSpeed * Time.deltaTime);
     }
 
 
