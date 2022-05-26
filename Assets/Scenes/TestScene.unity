@@ -10640,10 +10640,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2821729920110985919, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3042012441689130974, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
       propertyPath: stallPositions.Array.data[0]
       value: 
@@ -10659,10 +10655,6 @@ PrefabInstance:
     - target: {fileID: 5512151517462257996, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5818818883313595259, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7021153429203306797, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
       propertyPath: m_RootOrder
@@ -10707,10 +10699,6 @@ PrefabInstance:
     - target: {fileID: 7021153429203306797, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7256128817051104322, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Idle_R
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
