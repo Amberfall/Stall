@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a9816c185cd71442b3bf0f8439e1b28, type: 3}
   m_Name: FlowerBun
   m_EditorClassIdentifier: 
-  name: FlowerBun
+  name: Flower Bun
   description: a sweet bun, decorated with a flower
   sprite: {fileID: 21300000, guid: c859258cad576054b9d57d068cbe04a9, type: 3}
   cookAction: {fileID: 11400000, guid: 327fe692a0df7af46896e1ff66afd19e, type: 2}

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a9816c185cd71442b3bf0f8439e1b28, type: 3}
-  m_Name: Smoked Starfruit
+  m_Name: Candy
   m_EditorClassIdentifier: 
-  name: Smoked Starfruit
+  name: Candy
   description: Juicy!
-  sprite: {fileID: 21300000, guid: 0a5d9b7f3e4172b4db78f85a0d7a9cc8, type: 3}
-  cookAction: {fileID: 11400000, guid: 327fe692a0df7af46896e1ff66afd19e, type: 2}
+  sprite: {fileID: 21300000, guid: e92ff9e9a60210745a36ded5b60e2e0c, type: 3}
+  cookAction: {fileID: 11400000, guid: e9e92a8c78fa0a146a339a45b05386c6, type: 2}
   ingredients:
-  - {fileID: 11400000, guid: efdf4b4c05daeee408eaf7be0cfcebd0, type: 2}
+  - {fileID: 11400000, guid: dea8c5bc6fbe29c498156d3122254730, type: 2}
