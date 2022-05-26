@@ -15,3 +15,5 @@ MonoBehaviour:
   name: Blueberry
   description: Actually purple
   sprite: {fileID: 21300000, guid: e7117e1f2e557274797e7591d6b4ad1f, type: 3}
+  hints:
+  - BLUEBERRY!

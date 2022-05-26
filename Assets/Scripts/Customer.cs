@@ -27,6 +27,8 @@ public class Customer : MonoBehaviour
 
     [HideInInspector] public Vector2 spawnPos;
 
+    public CustomerStateManager stateManager;
+
     private void Awake()
     {
         wanderAroundArea = FindObjectOfType<WanderAroundArea>().GetComponent<BoxCollider2D>();

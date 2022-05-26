@@ -5,7 +5,7 @@ using UnityEngine;
 public class CustomerStateManager : MonoBehaviour
 {
 
-    CustomerBaseState currentState;
+    public CustomerBaseState currentState;
     [HideInInspector] public Customer customer;
     public CustomerUnseatedState UnseatedState = new CustomerUnseatedState();
     public CustomerSeatedState SeatedState = new CustomerSeatedState();
@@ -17,6 +17,7 @@ public class CustomerStateManager : MonoBehaviour
     {
         stall = FindObjectOfType<Stall>();
         customer = GetComponent<Customer>();
+        customer.stateManager = this;
     }
 
     void Start()

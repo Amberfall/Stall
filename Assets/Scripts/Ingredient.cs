@@ -9,4 +9,7 @@ public class Ingredient : ScriptableObject
     public string description;
     public Sprite sprite;
     //a variable which holds the combo that translates to this ingredient
+
+    public List<string> hints = new List<string>();
+
 }
