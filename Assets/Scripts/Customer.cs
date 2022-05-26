@@ -22,8 +22,10 @@ public class Customer : MonoBehaviour
     public UnityEvent onEating;
     public UnityEvent onFed;
     public UnityEvent onLost;
+    public UnityEvent onStoppedWalking;
+    public UnityEvent onStartWalking;
 
-
+    [HideInInspector] public Vector2 spawnPos;
 
     private void Awake()
     {

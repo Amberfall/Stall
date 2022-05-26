@@ -19,7 +19,7 @@ public class CustomerFedState : CustomerBaseState
         {
             timeToEat += Time.deltaTime;
 
-            if(timeToEat > 1)
+            if(timeToEat > 2.7f)
             {
                 customerStateManager.customer.onFed.Invoke();
                 customerStateManager.stall.RemoveMe(customerStateManager.customer);
@@ -41,7 +41,18 @@ public class CustomerFedState : CustomerBaseState
         if (leaving)
         {
             customerStateManager.customer.foodHolder.sprite = null;
-            customerStateManager.customer.transform.Translate(Vector2.right * Time.deltaTime * 3);
+            customerStateManager.transform.position = Vector2.MoveTowards(customerStateManager.transform.position, customerStateManager.customer.spawnPos,
+                customerStateManager.customer.walkSpeed * Time.deltaTime);
+
+            if (customerStateManager.transform.position.x > customerStateManager.customer.spawnPos.x)
+            {
+                customerStateManager.customer.spriteSpriteRenderer.flipX = true;
+            }
+            else
+            {
+                customerStateManager.customer.spriteSpriteRenderer.flipX = false;
+
+            }
         }
 
     }

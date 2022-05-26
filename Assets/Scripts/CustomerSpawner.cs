@@ -20,7 +20,10 @@ public class CustomerSpawner : MonoBehaviour
     {
         if(timeToSpawn <= 0)
         {
-            Instantiate(ChooseRandomCustomer(), ChooseRandomSpawnPosition().position, Quaternion.identity);
+            GameObject instantiatedObject;
+            int randomIndex = Random.Range(0, randomSpawnPositions.Count);
+            instantiatedObject = Instantiate(ChooseRandomCustomer(), randomSpawnPositions[randomIndex].position, Quaternion.identity);
+            instantiatedObject.GetComponent<Customer>().spawnPos = randomSpawnPositions[randomIndex].position;
             ResetSpawnTime();
         }
         else
@@ -40,10 +43,5 @@ public class CustomerSpawner : MonoBehaviour
         
     }
 
-    Transform ChooseRandomSpawnPosition()
-    {
-        int randomIndex = Random.Range(0, randomSpawnPositions.Count);
-        return randomSpawnPositions[randomIndex];
-    }
 
 }
