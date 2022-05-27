@@ -9,9 +9,9 @@ public class CustomerSpawner : MonoBehaviour
 
     [SerializeField] List<Transform> randomSpawnPositions;
     
-    float timeToSpawn;
+    public float timeToSpawn;
 
-    float currentSpawnDifficulty;
+    public float currentSpawnDifficulty;
 
     bool startSpawnTimer;
 
@@ -80,6 +80,7 @@ public class CustomerSpawner : MonoBehaviour
     void ChangeSpawnTime(float changeTo)
     {
         currentSpawnDifficulty = changeTo;
+
     }
     public void ResetSpawnTime()
     {
@@ -88,7 +89,7 @@ public class CustomerSpawner : MonoBehaviour
 
     void ResetServeTime()
     {
-        serveTimer = 60 - (customersFed * 3);
+        serveTimer = 120 - (customersFed * 3);
         serveCustomerInTime = serveTimer;
     }
     GameObject ChooseRandomCustomer()
@@ -102,7 +103,7 @@ public class CustomerSpawner : MonoBehaviour
     {
         customersFed++;
         ResetServeTime();
-        StartSpawningAt(3, 60);
+        StartSpawningAt(2, 60);
 
         if (!startSpawnTimer)
         {
@@ -111,17 +112,17 @@ public class CustomerSpawner : MonoBehaviour
 
 
 
-        IncreaseSpawning(5, 50);
-        IncreaseSpawning(8, 40);
-        IncreaseSpawning(10, 30);
-        IncreaseSpawning(12, 20);
-        IncreaseSpawning(15, 10);
-        IncreaseSpawning(17, 8);
-        IncreaseSpawning(20, 5);
+        IncreaseSpawning(4, 40);
+        IncreaseSpawning(6, 30);
+        IncreaseSpawning(8, 20);
+        IncreaseSpawning(10, 15);
+        IncreaseSpawning(12, 10);
+        IncreaseSpawning(14, 8);
+        IncreaseSpawning(26, 5);
 
         amountOfCustomers--;
         seatedCustomers--;
-        if (customersFed > 3 && amountOfCustomers == 0)
+        if (customersFed > 2 && amountOfCustomers == 0)
         {
             SpawnCustomer();
         }
@@ -131,6 +132,7 @@ public class CustomerSpawner : MonoBehaviour
     {
         if (customersFed == atNumOfFedCustomers)
         {
+            timeToSpawn -= spawnTime;
             ChangeSpawnTime(spawnTime);
         }
     }
