@@ -17,3 +17,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 50f1e3a9a22f75c4db3c7ccf55696b3c, type: 3}
   hints:
   - You got anything drippy? Drippy is good.
+  - The best foods make you sticky.
+  - Anybody hear a buzzing noise?
+  - If it isn't guarded, it's probably not tasty.
