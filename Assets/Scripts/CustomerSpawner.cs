@@ -35,7 +35,7 @@ public class CustomerSpawner : MonoBehaviour
 
     void Start()
     {
-        serveTime = 120;
+        serveTime = 200;
         ResetSpawnTime();
         SpawnCustomer();
     }
@@ -110,10 +110,10 @@ public class CustomerSpawner : MonoBehaviour
             OnWonGame.Raise();
         }
 
-        IncreaseSpawning(3, 30, 80);
-        IncreaseSpawning(5, 20, 40);
-        IncreaseSpawning(7, 15, 20);
-        IncreaseSpawning(9, 10, 15);
+        IncreaseSpawning(3, 30, 150);
+        IncreaseSpawning(5, 20, 120);
+        IncreaseSpawning(8, 15, 90);
+        IncreaseSpawning(10, 10, 60);
 
 
         amountOfCustomers--;
