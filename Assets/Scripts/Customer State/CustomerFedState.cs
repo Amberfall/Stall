@@ -10,6 +10,7 @@ public class CustomerFedState : CustomerBaseState
     bool hasBeenFed;
     public override void EnterState(CustomerStateManager customerStateManager)
     {
+        customerStateManager.customer.onGetFood.Invoke();
 
     }
     public override void UpdateState(CustomerStateManager customerStateManager)

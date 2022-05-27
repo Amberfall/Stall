@@ -24,6 +24,7 @@ public class Customer : MonoBehaviour
     public UnityEvent onLost;
     public UnityEvent onStoppedWalking;
     public UnityEvent onStartWalking;
+    public UnityEvent onGetFood;
 
     [HideInInspector] public Vector2 spawnPos;
 

@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CustomerSpawner : MonoBehaviour
 {
     [SerializeField] List<GameObject> customers;
 
     [SerializeField] List<Transform> randomSpawnPositions;
-
+    
     float timeToSpawn;
 
     float currentSpawnDifficulty;
@@ -19,9 +20,19 @@ public class CustomerSpawner : MonoBehaviour
 
     public int amountOfCustomers;
 
+    public Image customerTimeImage;
+
+    float serveCustomerInTime;
+    float serveTimer;
+
+    bool hasCustomer;
+
+    int seatedCustomers;
+
     void Start()
     {
-        //ResetSpawnTime();
+        ResetServeTime();
+        ResetSpawnTime();
         SpawnCustomer();
     }
     void Update()
@@ -38,6 +49,20 @@ public class CustomerSpawner : MonoBehaviour
                 timeToSpawn -= Time.deltaTime;
             }
         }
+
+        if (seatedCustomers > 0)
+        {
+            if (serveTimer < 0)
+            {
+                Debug.Log("Dead!");
+            }
+            else
+            {
+                serveTimer -= Time.deltaTime;
+            }
+        }
+
+        customerTimeImage.fillAmount = serveTimer / serveCustomerInTime;
 
 
     }
@@ -60,6 +85,12 @@ public class CustomerSpawner : MonoBehaviour
     {
         timeToSpawn = currentSpawnDifficulty;
     }
+
+    void ResetServeTime()
+    {
+        serveTimer = 60 - (customersFed * 3);
+        serveCustomerInTime = serveTimer;
+    }
     GameObject ChooseRandomCustomer()
     {
         int randomIndex = Random.Range(0, customers.Count);
@@ -70,7 +101,7 @@ public class CustomerSpawner : MonoBehaviour
     public void CustomerGotFed()
     {
         customersFed++;
-
+        ResetServeTime();
         StartSpawningAt(3, 60);
 
         if (!startSpawnTimer)
@@ -89,7 +120,7 @@ public class CustomerSpawner : MonoBehaviour
         IncreaseSpawning(20, 5);
 
         amountOfCustomers--;
-
+        seatedCustomers--;
         if (customersFed > 3 && amountOfCustomers == 0)
         {
             SpawnCustomer();
@@ -117,7 +148,7 @@ public class CustomerSpawner : MonoBehaviour
     {
         customersLost++;
         amountOfCustomers--;
-
+        seatedCustomers--;
         if (amountOfCustomers == 0)
         {
             SpawnCustomer();
@@ -125,5 +156,10 @@ public class CustomerSpawner : MonoBehaviour
 
     }
 
+
+    public void CustomerWasSeated()
+    {
+        seatedCustomers++;
+    }
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Stall : MonoBehaviour
 {
-    [SerializeField] List<Stool> stools;
+    public List<Stool> stools;
     public List<CounterSpot> counterSpots;
     public List<Stool> ListOpenStools()
     {
