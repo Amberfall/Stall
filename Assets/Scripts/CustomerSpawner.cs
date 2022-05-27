@@ -20,18 +20,10 @@ public class CustomerSpawner : MonoBehaviour
 
     public int amountOfCustomers;
 
-    public Image customerTimeImage;
-
-    float serveCustomerInTime;
-    float serveTimer;
-
-    bool hasCustomer;
-
     int seatedCustomers;
 
     void Start()
     {
-        ResetServeTime();
         ResetSpawnTime();
         SpawnCustomer();
     }
@@ -49,21 +41,6 @@ public class CustomerSpawner : MonoBehaviour
                 timeToSpawn -= Time.deltaTime;
             }
         }
-
-        if (seatedCustomers > 0)
-        {
-            if (serveTimer < 0)
-            {
-                Debug.Log("Dead!");
-            }
-            else
-            {
-                serveTimer -= Time.deltaTime;
-            }
-        }
-
-        customerTimeImage.fillAmount = serveTimer / serveCustomerInTime;
-
 
     }
 
@@ -87,11 +64,6 @@ public class CustomerSpawner : MonoBehaviour
         timeToSpawn = currentSpawnDifficulty;
     }
 
-    void ResetServeTime()
-    {
-        serveTimer = 120 - (customersFed * 3);
-        serveCustomerInTime = serveTimer;
-    }
     GameObject ChooseRandomCustomer()
     {
         int randomIndex = Random.Range(0, customers.Count);
@@ -102,7 +74,6 @@ public class CustomerSpawner : MonoBehaviour
     public void CustomerGotFed()
     {
         customersFed++;
-        ResetServeTime();
         StartSpawningAt(2, 60);
 
         if (!startSpawnTimer)

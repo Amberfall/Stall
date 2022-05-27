@@ -17,7 +17,8 @@ public class DialogueSystem : MonoBehaviour
 
     int displayNumber;
 
-    bool display;
+    bool hasShownedHint;
+    int randomHint;
 
     private void Start()
     {
@@ -60,12 +61,20 @@ public class DialogueSystem : MonoBehaviour
                 {
                     readTimer -= Time.deltaTime;
                     textBoxes[displayNum].SetActive(true);
-                    texts[displayNum].text = ingredient.hints[Random.Range(0, ingredient.hints.Count)];
+
+                    if (!hasShownedHint)
+                    {
+                        randomHint = Random.Range(0, ingredient.hints.Count);
+                        hasShownedHint = true;
+                    }
+
+                    texts[displayNum].text = ingredient.hints[randomHint];
 
                     if (readTimer < 0)
                     {
                         texts[displayNum].text = null;
                         textBoxes[displayNum].SetActive(false);
+                        hasShownedHint = false;
                         if (displayNumber == 2)
                         {
                             displayNumber = 0;
