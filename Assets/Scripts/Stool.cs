@@ -19,7 +19,7 @@ public class Stool : MonoBehaviour
             {
                 if (!hasGottenTime)
                 {
-                    timer = customer.GetWaitTime();
+                    timer = customer.timeWaiting;
                     fullTime = timer;
                     timerImage.enabled = true;
                     hasGottenTime = true;

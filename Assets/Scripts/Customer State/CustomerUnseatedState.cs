@@ -5,7 +5,6 @@ using UnityEngine;
 public class CustomerUnseatedState : CustomerBaseState
 {
     Transform targetSeat = null;
-    float timeWaiting;
 
     bool hasStoppedWalking;
     Vector2 moveToPos;
@@ -17,7 +16,6 @@ public class CustomerUnseatedState : CustomerBaseState
     {
         Debug.Log("new customer approaches...");
         customerStateManager.customer.onUnseated.Invoke();
-        timeWaiting = 0;      
     }
     public override void UpdateState(CustomerStateManager customerStateManager)
     {
@@ -31,7 +29,6 @@ public class CustomerUnseatedState : CustomerBaseState
             if(targetSeat == null)
             {
                 //update the timer.
-                timeWaiting += Time.deltaTime;
 
                 if (!hasEnteredSpawnArea)
                 {
@@ -113,11 +110,6 @@ public class CustomerUnseatedState : CustomerBaseState
                 //and wander around.
             }
             //if timer runs out
-            if (timeWaiting >= customerStateManager.customer.GetWaitTime())
-            {
-                //change to lost state and leave.
-                customerStateManager.SwitchState(customerStateManager.LostState);
-            }
         }
         else
         {

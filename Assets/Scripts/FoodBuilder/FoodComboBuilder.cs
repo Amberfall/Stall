@@ -102,7 +102,8 @@ public class FoodComboBuilder : MonoBehaviour
                                 isARecipe = true;
                                 player.playerState = PlayerController.PlayerState.Cooking;
                                 arrowCooking.currentFood = food;
-                                arrowCooking.ActivateRandomArrow();
+                                StartCoroutine(arrowCooking.ActivateRandomArrows());
+                                //arrowCooking.ActivateRandomArrow();
                                 Debug.Log("Cook " + food.name);
                                 ResetRecipeBuilder();
                             }
@@ -125,7 +126,8 @@ public class FoodComboBuilder : MonoBehaviour
                                     isARecipe = true;
                                     player.playerState = PlayerController.PlayerState.Cooking;
                                     arrowCooking.currentFood = food;
-                                    arrowCooking.ActivateRandomArrow();
+                                    arrowCooking.StartCoroutine(arrowCooking.ActivateRandomArrows());
+                                    //arrowCooking.ActivateRandomArrow();
                                     Debug.Log("Cook " + food.name);
                                     ResetRecipeBuilder();
                                 }
@@ -162,6 +164,7 @@ public class FoodComboBuilder : MonoBehaviour
                     case ComboArrow.Direction.Left:
                         arrowImages[recipeNum].sprite = leftArrow;
                         arrowImages[recipeNum].gameObject.SetActive(true);
+                        arrowImages[recipeNum].GetComponent<ArrowAnimation>().Animate();
                         recipeNum++;
                         currentCookAction = actionChooser.cookAction;
                         texts[0].text = actionChooser.cookAction.name;
@@ -172,6 +175,7 @@ public class FoodComboBuilder : MonoBehaviour
                     case ComboArrow.Direction.Right:
                         arrowImages[recipeNum].sprite = rightArrow;
                         arrowImages[recipeNum].gameObject.SetActive(true);
+                        arrowImages[recipeNum].GetComponent<ArrowAnimation>().Animate();
                         recipeNum++;
                         currentCookAction = actionChooser.cookAction;
                         texts[0].text = actionChooser.cookAction.name;
@@ -182,6 +186,7 @@ public class FoodComboBuilder : MonoBehaviour
                     case ComboArrow.Direction.Up:
                         arrowImages[recipeNum].sprite = upArrow;
                         arrowImages[recipeNum].gameObject.SetActive(true);
+                        arrowImages[recipeNum].GetComponent<ArrowAnimation>().Animate();
                         recipeNum++;
                         currentCookAction = actionChooser.cookAction;
                         texts[0].text = actionChooser.cookAction.name;
@@ -192,6 +197,7 @@ public class FoodComboBuilder : MonoBehaviour
                     case ComboArrow.Direction.Down:
                         arrowImages[recipeNum].sprite = downArrow;
                         arrowImages[recipeNum].gameObject.SetActive(true);
+                        arrowImages[recipeNum].GetComponent<ArrowAnimation>().Animate();
                         recipeNum++;
                         currentCookAction = actionChooser.cookAction;
                         texts[0].text = actionChooser.cookAction.name;
@@ -258,6 +264,8 @@ public class FoodComboBuilder : MonoBehaviour
     void CheckIngredient(Sprite spriteDir, IngredientChooser ingredChooser)
     {
         arrowImages[recipeNum - 1].sprite = spriteDir;
+        arrowImages[recipeNum - 1].GetComponent<ArrowAnimation>().Animate();
+
         arrowImages[recipeNum - 1].gameObject.SetActive(true);
 
         if (ingredientCombo == 2)

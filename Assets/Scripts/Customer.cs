@@ -5,8 +5,8 @@ using UnityEngine.Events;
 public class Customer : MonoBehaviour
 {
 
-    [SerializeField] float waitTime = 10f; //how long the customer will wait before leaving
-    float timeWaiting; //how long the customer has been waiting
+    [SerializeField] float waitTime; //how long the customer will wait before leaving
+    public float timeWaiting; //how long the customer has been waiting
     [SerializeField] Ingredient missingIngredient;
     public float walkSpeed = 5f;
 
@@ -41,6 +41,7 @@ public class Customer : MonoBehaviour
         spriteSpriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
     }
 
+    /*
     public void AddTimeWaiting(float time) //increase timer for how long customer has been waiting
     {
         timeWaiting += time;
@@ -49,6 +50,7 @@ public class Customer : MonoBehaviour
     {
         timeWaiting = 0;
     }
+    */
     public float GetWaitTime() //get how long the customer is willing to wait
     {
         return waitTime;

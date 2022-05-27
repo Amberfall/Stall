@@ -22,8 +22,11 @@ public class CustomerSpawner : MonoBehaviour
 
     int seatedCustomers;
 
+    int serveTime;
+
     void Start()
     {
+        serveTime = 100;
         ResetSpawnTime();
         SpawnCustomer();
     }
@@ -50,6 +53,11 @@ public class CustomerSpawner : MonoBehaviour
         int randomIndex = Random.Range(0, randomSpawnPositions.Count);
         instantiatedObject = Instantiate(ChooseRandomCustomer(), randomSpawnPositions[randomIndex].position, Quaternion.identity);
         instantiatedObject.GetComponent<Customer>().spawnPos = randomSpawnPositions[randomIndex].position;
+        instantiatedObject.GetComponent<Customer>().timeWaiting = serveTime;
+        if(serveTime > 15)
+        {
+            serveTime -= 2;
+        }
         amountOfCustomers++;
     }
 
@@ -89,7 +97,7 @@ public class CustomerSpawner : MonoBehaviour
         IncreaseSpawning(10, 15);
         IncreaseSpawning(12, 10);
         IncreaseSpawning(14, 8);
-        IncreaseSpawning(26, 5);
+        IncreaseSpawning(16, 5);
 
         amountOfCustomers--;
         seatedCustomers--;

@@ -39,6 +39,7 @@ public class ArrowCooking : MonoBehaviour
         player.pressedCookingArrow -= HitArrow;
     }
 
+    /*
     public void ActivateRandomArrow()
     {
         DeactivateArrows();
@@ -48,6 +49,22 @@ public class ArrowCooking : MonoBehaviour
             arrowPositions[i].transform.GetChild(Random.Range(0, 4)).gameObject.SetActive(true);
         }
 
+    }
+    */
+    public IEnumerator ActivateRandomArrows()
+    {
+        DeactivateArrows();
+
+        for (int i = 0; i < arrowPositions.Count; i++)
+        {
+            yield return new WaitForSeconds(0.1f);
+            int randomChild = Random.Range(0, 4);
+            arrowPositions[i].transform.GetChild(randomChild).gameObject.SetActive(true);
+            arrowPositions[i].transform.GetChild(randomChild).GetComponent<ComboArrow>().Animate();
+
+        }
+
+        yield break;
     }
 
     void DeactivateArrows()
@@ -82,12 +99,15 @@ public class ArrowCooking : MonoBehaviour
                 if(child.GetComponent<ComboArrow>().direction == direction)
                 {
                     child.transform.GetChild(0).gameObject.SetActive(true);
+                    child.transform.GetComponent<ComboArrow>().Animate();
+
                     arrowCount++;
                     if(arrowCount == arrowPositions.Count)
                     {
                         stall.counterSpots[player.stallInt].SetFood(currentFood);
                         player.playerState = PlayerController.PlayerState.Moving;
-                        DeactivateArrows();
+                        StartCoroutine(ArrowEndAnimation());
+                        //DeactivateArrows();
                         arrowCount = 0;
                         currentFood = null;
                     }
@@ -99,11 +119,27 @@ public class ArrowCooking : MonoBehaviour
         if (hasFailed)
         {
             player.onFailedArrowCooking.Raise();
+            StopAllCoroutines();
+
             DeactivateArrows();
-            ActivateRandomArrow();
+            //ActivateRandomArrow();
+            StartCoroutine(ActivateRandomArrows());
             arrowCount = 0;
         }
 
+    }
+
+
+    IEnumerator ArrowEndAnimation()
+    {
+
+        foreach (ArrowAnimation arrow in GetComponentsInChildren<ArrowAnimation>())
+        {
+            arrow.Animate();
+        }
+        yield return new WaitForSeconds(0.2f);
+        DeactivateArrows();
+        yield break;
     }
 
 }
