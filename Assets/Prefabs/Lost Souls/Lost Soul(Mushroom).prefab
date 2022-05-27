@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitTime: 120
   missingIngredient: {fileID: 11400000, guid: 960ed4915292edf42aa427a9fd3e5747, type: 2}
-  walkSpeed: 3
+  walkSpeed: 2
   foodHolder: {fileID: 3014129581526594765}
   foodHolderStartPos: {x: 0, y: 0}
   wanderAroundArea: {fileID: 0}
