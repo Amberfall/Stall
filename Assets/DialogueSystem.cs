@@ -41,7 +41,13 @@ public class DialogueSystem : MonoBehaviour
 
     void DisplayDialogue(int displayNum)
     {
-        if(timeBetweenTimer < 0)
+        if (stools[displayNum].GetCustomer() != null)
+        {
+            texts[displayNum].text = null;
+        }
+
+
+        if (timeBetweenTimer < 0)
         {
             if (stools[displayNum].GetCustomer() != null)
             {

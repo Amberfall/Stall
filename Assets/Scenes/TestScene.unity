@@ -4044,6 +4044,8 @@ GameObject:
   m_Component:
   - component: {fileID: 688665145}
   - component: {fileID: 688665144}
+  - component: {fileID: 688665147}
+  - component: {fileID: 688665146}
   m_Layer: 0
   m_Name: TempCustomerSpawner
   m_TagString: Untagged
@@ -4077,8 +4079,9 @@ MonoBehaviour:
   - {fileID: 817239466}
   - {fileID: 1873964158}
   - {fileID: 41868217}
-  minSpawnTime: 5
-  maxSpawnTime: 20
+  customersFed: 0
+  customersLost: 0
+  amountOfCustomers: 0
 --- !u!4 &688665145
 Transform:
   m_ObjectHideFlags: 0
@@ -4100,6 +4103,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &688665146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688665143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6465a783cdbb8e74da11397efe4caf01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: c5f2d27b5461601418caaac0fd8d1760, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 688665144}
+        m_TargetAssemblyTypeName: CustomerSpawner, Assembly-CSharp
+        m_MethodName: CustomerWasLost
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &688665147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688665143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6465a783cdbb8e74da11397efe4caf01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 792081c7e4eb2ea4cbbd129ac2bf71ee, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 688665144}
+        m_TargetAssemblyTypeName: CustomerSpawner, Assembly-CSharp
+        m_MethodName: CustomerGotFed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &691837708
 PrefabInstance:
   m_ObjectHideFlags: 0

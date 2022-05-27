@@ -7,7 +7,7 @@ public class CustomerFedState : CustomerBaseState
     bool hasGottenFood;
     float timeToEat;
     bool leaving;
-
+    bool hasBeenFed;
     public override void EnterState(CustomerStateManager customerStateManager)
     {
 
@@ -21,7 +21,11 @@ public class CustomerFedState : CustomerBaseState
 
             if(timeToEat > 2.7f)
             {
-                customerStateManager.customer.onFed.Invoke();
+                if (!hasBeenFed)
+                {
+                    customerStateManager.customer.onFed.Invoke();
+                    hasBeenFed = true;
+                }
                 customerStateManager.stall.RemoveMe(customerStateManager.customer);
                 leaving = true;
             }
