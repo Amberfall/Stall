@@ -2955,6 +2955,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1818196017}
     m_Modifications:
     - target: {fileID: 958028718151163913, guid: 531896abea0dfde4ba2ed3ce487ceb5e, type: 3}
+      propertyPath: OnLoseGame
+      value: 
+      objectReference: {fileID: 11400000, guid: 57954a86038b97243a5154a41131fe2f, type: 2}
+    - target: {fileID: 958028718151163913, guid: 531896abea0dfde4ba2ed3ce487ceb5e, type: 3}
       propertyPath: timerImage
       value: 
       objectReference: {fileID: 179171898}
@@ -3681,7 +3685,7 @@ GameObject:
   - component: {fileID: 610622218}
   - component: {fileID: 610622220}
   m_Layer: 0
-  m_Name: ArrowPosition
+  m_Name: ArrowPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4198,6 +4202,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb5c9da21ffdd54bae65baa873b14d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstLanternCustomers: 2
+  secondLanternCustomers: 8
+  thirdLanternCustomers: 15
+  OnWonGame: {fileID: 11400000, guid: 5039f25c33a552044a8c7e3ea66bd5e0, type: 2}
+  OnFirstLanternLit: {fileID: 11400000, guid: b2f6cea10263a2a4899634d7cece639f, type: 2}
+  OnSecondLanternLit: {fileID: 11400000, guid: 1c5194f60e62f0340909976f28ad9372, type: 2}
+  OnThirdLanternLit: {fileID: 11400000, guid: b9362f3603fa0fb4f9fefeb42c185b40, type: 2}
   customers:
   - {fileID: 92457863563454278, guid: 26d8799ea5a50fe469120c65cecf3da0, type: 3}
   - {fileID: 92457863563454278, guid: 16a1cf110df2d5c439fa5c9e76944bbb, type: 3}
@@ -6006,6 +6017,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1818196017}
     m_Modifications:
+    - target: {fileID: 958028718151163913, guid: 531896abea0dfde4ba2ed3ce487ceb5e, type: 3}
+      propertyPath: OnLoseGame
+      value: 
+      objectReference: {fileID: 11400000, guid: 57954a86038b97243a5154a41131fe2f, type: 2}
     - target: {fileID: 958028718151163913, guid: 531896abea0dfde4ba2ed3ce487ceb5e, type: 3}
       propertyPath: timerImage
       value: 
@@ -9236,7 +9251,7 @@ GameObject:
   - component: {fileID: 1468665282}
   - component: {fileID: 1468665284}
   m_Layer: 0
-  m_Name: ArrowPosition
+  m_Name: ArrowPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9618,7 +9633,7 @@ GameObject:
   - component: {fileID: 1505341732}
   - component: {fileID: 1505341734}
   m_Layer: 0
-  m_Name: ArrowPosition
+  m_Name: ArrowPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11734,7 +11749,7 @@ GameObject:
   - component: {fileID: 1955280804}
   - component: {fileID: 1955280806}
   m_Layer: 0
-  m_Name: ArrowPosition
+  m_Name: ArrowPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12880,7 +12895,7 @@ GameObject:
   - component: {fileID: 2056323865}
   - component: {fileID: 2056323867}
   m_Layer: 0
-  m_Name: ArrowPosition
+  m_Name: ArrowPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16634,6 +16649,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1818196017}
     m_Modifications:
+    - target: {fileID: 958028718151163913, guid: 531896abea0dfde4ba2ed3ce487ceb5e, type: 3}
+      propertyPath: OnLoseGame
+      value: 
+      objectReference: {fileID: 11400000, guid: 57954a86038b97243a5154a41131fe2f, type: 2}
     - target: {fileID: 958028718151163913, guid: 531896abea0dfde4ba2ed3ce487ceb5e, type: 3}
       propertyPath: timerImage
       value: 

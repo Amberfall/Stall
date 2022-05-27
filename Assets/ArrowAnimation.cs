@@ -9,12 +9,28 @@ public class ArrowAnimation : MonoBehaviour
 
     public void Animate()
     {
-        transform.localScale = Vector3.one * 2f;
+        if(gameObject.name == "ArrowPosition")
+        {
+            transform.localScale = Vector3.one * 1.5f;
+
+        }
+        else
+        {
+            transform.localScale = Vector3.one * 2f;
+        }
     }
 
 
     private void Update()
     {
-        transform.localScale = Vector3.SmoothDamp(transform.localScale, Vector3.one, ref refVelo, 20 * Time.deltaTime);
+        if (gameObject.name == "ArrowPosition")
+        {
+            transform.localScale = Vector3.MoveTowards(transform.localScale, Vector3.one, 10 * Time.deltaTime);
+
+        }
+        else
+        {
+            transform.localScale = Vector3.SmoothDamp(transform.localScale, Vector3.one, ref refVelo, 20 * Time.deltaTime);
+        }
     }
 }

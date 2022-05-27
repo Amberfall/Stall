@@ -5,6 +5,16 @@ using UnityEngine.UI;
 
 public class CustomerSpawner : MonoBehaviour
 {
+
+    public int firstLanternCustomers;
+    public int secondLanternCustomers;
+    public int thirdLanternCustomers;
+
+    [SerializeField] GameEvent OnWonGame;
+    [SerializeField] GameEvent OnFirstLanternLit;
+    [SerializeField] GameEvent OnSecondLanternLit;
+    [SerializeField] GameEvent OnThirdLanternLit;
+
     [SerializeField] List<GameObject> customers;
 
     [SerializeField] List<Transform> randomSpawnPositions;
@@ -20,13 +30,12 @@ public class CustomerSpawner : MonoBehaviour
 
     public int amountOfCustomers;
 
-    int seatedCustomers;
 
-    int serveTime;
+    float serveTime;
 
     void Start()
     {
-        serveTime = 100;
+        serveTime = 120;
         ResetSpawnTime();
         SpawnCustomer();
     }
@@ -54,10 +63,6 @@ public class CustomerSpawner : MonoBehaviour
         instantiatedObject = Instantiate(ChooseRandomCustomer(), randomSpawnPositions[randomIndex].position, Quaternion.identity);
         instantiatedObject.GetComponent<Customer>().spawnPos = randomSpawnPositions[randomIndex].position;
         instantiatedObject.GetComponent<Customer>().timeWaiting = serveTime;
-        if(serveTime > 15)
-        {
-            serveTime -= 2;
-        }
         amountOfCustomers++;
     }
 
@@ -89,28 +94,40 @@ public class CustomerSpawner : MonoBehaviour
             SpawnCustomer();
         }
 
+        if(customersFed == firstLanternCustomers)
+        {
+            OnFirstLanternLit.Raise();
+        }
 
+        if(customersFed == secondLanternCustomers)
+        {
+            OnSecondLanternLit.Raise();
+        }
 
-        IncreaseSpawning(4, 40);
-        IncreaseSpawning(6, 30);
-        IncreaseSpawning(8, 20);
-        IncreaseSpawning(10, 15);
-        IncreaseSpawning(12, 10);
-        IncreaseSpawning(14, 8);
-        IncreaseSpawning(16, 5);
+        if(customersFed == thirdLanternCustomers)
+        {
+            OnThirdLanternLit.Raise();
+            OnWonGame.Raise();
+        }
+
+        IncreaseSpawning(3, 30, 80);
+        IncreaseSpawning(5, 20, 40);
+        IncreaseSpawning(7, 15, 20);
+        IncreaseSpawning(9, 10, 15);
+
 
         amountOfCustomers--;
-        seatedCustomers--;
         if (customersFed > 2 && amountOfCustomers == 0)
         {
             SpawnCustomer();
         }
     }
 
-    void IncreaseSpawning(int atNumOfFedCustomers, float spawnTime)
+    void IncreaseSpawning(int atNumOfFedCustomers, float spawnTime, float servTime)
     {
         if (customersFed == atNumOfFedCustomers)
         {
+            serveTime = servTime;
             timeToSpawn -= spawnTime;
             ChangeSpawnTime(spawnTime);
         }
@@ -129,7 +146,6 @@ public class CustomerSpawner : MonoBehaviour
     {
         customersLost++;
         amountOfCustomers--;
-        seatedCustomers--;
         if (amountOfCustomers == 0)
         {
             SpawnCustomer();
@@ -140,7 +156,6 @@ public class CustomerSpawner : MonoBehaviour
 
     public void CustomerWasSeated()
     {
-        seatedCustomers++;
     }
 
 }

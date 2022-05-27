@@ -8,6 +8,10 @@ public class Stool : MonoBehaviour
     Customer customer;
     public Image timerImage;
 
+    public GameEvent OnLoseGame;
+
+    bool lostGame;
+
     float timer;
     bool hasGottenTime;
     float fullTime;
@@ -24,7 +28,11 @@ public class Stool : MonoBehaviour
                     timerImage.enabled = true;
                     hasGottenTime = true;
                 }
-                timer -= Time.deltaTime;
+                if (!lostGame)
+                {
+                    timer -= Time.deltaTime;
+
+                }
             }
         }
         else
@@ -34,6 +42,15 @@ public class Stool : MonoBehaviour
         }
 
         timerImage.fillAmount = timer / fullTime;
+
+        if(timer < 0)
+        {
+            OnLoseGame.Raise();
+            foreach (Stool stool in FindObjectsOfType<Stool>())
+            {
+                stool.lostGame = true;
+            }
+        }
     }
 
     public bool IsOccupied()
