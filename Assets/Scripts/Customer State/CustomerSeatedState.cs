@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CustomerSeatedState : CustomerBaseState
 {
-
-    float timeWaiting;
     public override void EnterState(CustomerStateManager customerStateManager)
     {
         customerStateManager.customer.onSeated.Invoke();
@@ -15,13 +13,7 @@ public class CustomerSeatedState : CustomerBaseState
     public override void UpdateState(CustomerStateManager customerStateManager)
     {
         customerStateManager.customer.spriteSpriteRenderer.flipX = false;
-        timeWaiting += Time.deltaTime;
 
-        if (timeWaiting >= customerStateManager.customer.GetWaitTime())
-        {
-            //change to lost state and leave.
-            customerStateManager.SwitchState(customerStateManager.LostState);
-        }
 
         foreach (CounterSpot counterSpot in customerStateManager.stall.counterSpots)
         {

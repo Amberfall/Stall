@@ -58,12 +58,16 @@ public class CustomerSpawner : MonoBehaviour
 
     void SpawnCustomer()
     {
-        GameObject instantiatedObject;
-        int randomIndex = Random.Range(0, randomSpawnPositions.Count);
-        instantiatedObject = Instantiate(ChooseRandomCustomer(), randomSpawnPositions[randomIndex].position, Quaternion.identity);
-        instantiatedObject.GetComponent<Customer>().spawnPos = randomSpawnPositions[randomIndex].position;
-        instantiatedObject.GetComponent<Customer>().timeWaiting = serveTime;
-        amountOfCustomers++;
+        if(amountOfCustomers < 6)
+        {
+            GameObject instantiatedObject;
+            int randomIndex = Random.Range(0, randomSpawnPositions.Count);
+            instantiatedObject = Instantiate(ChooseRandomCustomer(), randomSpawnPositions[randomIndex].position, Quaternion.identity);
+            instantiatedObject.GetComponent<Customer>().spawnPos = randomSpawnPositions[randomIndex].position;
+            instantiatedObject.GetComponent<Customer>().timeWaiting = serveTime;
+            amountOfCustomers++;
+        }
+
     }
 
 
@@ -110,17 +114,19 @@ public class CustomerSpawner : MonoBehaviour
             OnWonGame.Raise();
         }
 
-        IncreaseSpawning(3, 30, 150);
-        IncreaseSpawning(5, 20, 120);
-        IncreaseSpawning(8, 15, 90);
-        IncreaseSpawning(10, 10, 60);
+        IncreaseSpawning(3, 30, 180);
+        IncreaseSpawning(5, 15, 160);
+        IncreaseSpawning(8, 10, 120);
+        IncreaseSpawning(10, 8, 90);
 
 
-        amountOfCustomers--;
         if (customersFed > 2 && amountOfCustomers == 0)
         {
             SpawnCustomer();
         }
+
+        amountOfCustomers--;
+
     }
 
     void IncreaseSpawning(int atNumOfFedCustomers, float spawnTime, float servTime)
@@ -145,11 +151,12 @@ public class CustomerSpawner : MonoBehaviour
     public void CustomerWasLost()
     {
         customersLost++;
-        amountOfCustomers--;
         if (amountOfCustomers == 0)
         {
             SpawnCustomer();
         }
+        amountOfCustomers--;
+
 
     }
 
