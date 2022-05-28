@@ -17,6 +17,7 @@ public class Customer : MonoBehaviour
 
     public SpriteRenderer spriteSpriteRenderer;
 
+    public UnityEvent onHasTransformed;
     public UnityEvent onUnseated;
     public UnityEvent onSeated;
     public UnityEvent onEating;

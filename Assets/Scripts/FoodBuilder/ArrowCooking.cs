@@ -98,10 +98,11 @@ public class ArrowCooking : MonoBehaviour
             {
                 if(child.GetComponent<ComboArrow>().direction == direction)
                 {
+                    arrowCount++;
+
                     child.transform.GetChild(0).gameObject.SetActive(true);
                     child.transform.GetComponent<ComboArrow>().Animate();
 
-                    arrowCount++;
                     if(arrowCount == arrowPositions.Count)
                     {
                         stall.counterSpots[player.stallInt].SetFood(currentFood);
