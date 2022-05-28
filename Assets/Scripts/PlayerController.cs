@@ -121,21 +121,53 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if(waveTime < 0)
+        if(waveTimeIfMoving < 0)
         {
-            waveTime += Time.deltaTime;
+            waveTimeIfMoving += Time.deltaTime;
+        }
+
+        if (waveTimeIfCanThrowAway < 0)
+        {
+            waveTimeIfCanThrowAway += Time.deltaTime;
         }
 
     }
 
 
+    void CanThrowFoodEventCall()
+    {
+        if (waveTimeIfCanThrowAway >= 0)
+        {
+            if (!canThrowFoodEventBool)
+            {
+                onCanThrowAway.Raise();
+                canThrowFoodEventBool = true;
+            }
+        }
+
+
+
+        if (canThrowFoodEventBool)
+        {
+            isChoosingAction = false;
+            isChoosingIngredient = false;
+            isCooking = false;
+            isMoving = false;
+            isThrowingFood = false;
+            waveTimeIfMoving = 1;
+
+
+        }
+
+
+    }
+
     void IsMovingEventCall()
     {
-        if(waveTime >= 0)
+        if(waveTimeIfMoving >= 0)
         {
             if (!isMoving)
             {
-                Debug.Log("MovingCall");
                 onNormalMovement.Raise();
                 isMoving = true;
             }
@@ -150,6 +182,7 @@ public class PlayerController : MonoBehaviour
             isCooking = false;
             isThrowingFood = false;
             canThrowFoodEventBool = false;
+            waveTimeIfCanThrowAway = 1;
         }
 
     }
@@ -159,7 +192,8 @@ public class PlayerController : MonoBehaviour
         {
             onChoosingIngredients.Raise();
             isChoosingIngredient = true;
-            waveTime = 1;
+            waveTimeIfMoving = 1;
+            waveTimeIfCanThrowAway = 1;
         }
         isChoosingAction = false;
         isMoving = false;
@@ -173,7 +207,8 @@ public class PlayerController : MonoBehaviour
         {
             onChoosingCookAction.Raise();
             isChoosingAction = true;
-            waveTime = 1;
+            waveTimeIfMoving = 1;
+            waveTimeIfCanThrowAway = 1;
 
         }
         isMoving = false;
@@ -188,7 +223,8 @@ public class PlayerController : MonoBehaviour
         {
             onCooking.Raise();
             isCooking = true;
-            waveTime = 1;
+            waveTimeIfMoving = 1;
+            waveTimeIfCanThrowAway = 1;
 
         }
         isChoosingAction = false;
@@ -203,7 +239,8 @@ public class PlayerController : MonoBehaviour
         {
             onThrowingAway.Raise();
             isThrowingFood = true;
-            waveTime = 1;
+            waveTimeIfMoving = 1;
+            waveTimeIfCanThrowAway = 1;
 
         }
         isChoosingAction = false;
@@ -212,22 +249,7 @@ public class PlayerController : MonoBehaviour
         isMoving = false;
         canThrowFoodEventBool = false;
     }
-    void CanThrowFoodEventCall()
-    {
-        if (!canThrowFoodEventBool)
-        {
-            onCanThrowAway.Raise();
-            canThrowFoodEventBool = true;
-            waveTime = 1;
 
-        }
-
-        isChoosingAction = false;
-        isChoosingIngredient = false;
-        isCooking = false;
-        isMoving = false;
-        isThrowingFood = false;
-    }
 
     void ChooseActionInput()
     {
@@ -403,13 +425,32 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    float waveTime;
+    float waveTimeIfMoving;
+    float waveTimeIfCanThrowAway;
+
     public void OnSoulTransformed()
     {
-        Debug.Log("Transformed");
-        waveTime = -1.5f;
-        isMoving = false;
-        onWave.Raise();
+        if(playerState == PlayerState.Moving)
+        {
+            if (canThrowFood == true)
+            {
+                Debug.Log("CanTHrowWave");
+                waveTimeIfCanThrowAway = -1.5f;
+                canThrowFoodEventBool = false;
+                onWave.Raise();
+                return;
+            }
+
+            if (canThrowFood == false)
+            {
+                waveTimeIfMoving = -1.5f;
+                isMoving = false;
+                onWave.Raise();
+                return;
+            }
+        }
+
+
     }
 
 }

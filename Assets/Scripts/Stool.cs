@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Stool : MonoBehaviour
 {
-    Customer customer;
+    public Customer customer;
     public Image timerImage;
 
     public GameEvent OnLoseGame;

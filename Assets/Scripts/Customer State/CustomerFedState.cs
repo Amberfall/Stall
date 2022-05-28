@@ -52,7 +52,7 @@ public class CustomerFedState : CustomerBaseState
 
 
             timeToTransform += Time.deltaTime;
-            if(timeToTransform > 0.7f)
+            if(timeToTransform > 0.5f)
             {
                 if (!hasTransformed)
                 {
