@@ -33,7 +33,17 @@ public class Stool : MonoBehaviour
                     timer -= Time.deltaTime;
 
                 }
+                else
+                {
+                    timerImage.enabled = false;
+                }
             }
+            else
+            {
+                timerImage.enabled = false;
+                hasGottenTime = false;
+            }
+
         }
         else
         {
@@ -49,6 +59,7 @@ public class Stool : MonoBehaviour
             foreach (Stool stool in FindObjectsOfType<Stool>())
             {
                 stool.lostGame = true;
+                stool.timerImage.enabled = false;
             }
         }
     }
