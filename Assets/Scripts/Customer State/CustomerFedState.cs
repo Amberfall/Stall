@@ -54,9 +54,13 @@ public class CustomerFedState : CustomerBaseState
             timeToTransform += Time.deltaTime;
             if(timeToTransform > 0.7f)
             {
-                customerStateManager.customer.onHasTransformed.Invoke();
-                customerStateManager.stall.RemoveMe(customerStateManager.customer);
-                hasTransformed = true;
+                if (!hasTransformed)
+                {
+                    customerStateManager.customer.onHasTransformed.Invoke();
+                    customerStateManager.stall.RemoveMe(customerStateManager.customer);
+                    hasTransformed = true;
+                }
+
             }
 
 

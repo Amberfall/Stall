@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+
+
     [SerializeField] GameEvent onNormalMovement;
     [SerializeField] GameEvent onChoosingCookAction;
     [SerializeField] GameEvent onChoosingIngredients;
@@ -14,6 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameEvent onStoppedMoving;
     [SerializeField] GameEvent onStartMoving;
     public GameEvent onFailedArrowCooking;
+
+    [SerializeField] GameEvent onWave;
 
     [SerializeField] SpriteRenderer spriteSpriteRenderer;
 
@@ -115,21 +119,39 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
         }
+
+
+        if(waveTime < 0)
+        {
+            waveTime += Time.deltaTime;
+        }
+
     }
 
 
     void IsMovingEventCall()
     {
-        if(!isMoving)
+        if(waveTime >= 0)
         {
-            onNormalMovement.Raise();
-            isMoving = true;
+            if (!isMoving)
+            {
+                Debug.Log("MovingCall");
+                onNormalMovement.Raise();
+                isMoving = true;
+            }
         }
-        isChoosingAction = false;
-        isChoosingIngredient = false;
-        isCooking = false;
-        isThrowingFood = false;
-        canThrowFoodEventBool = false;
+
+
+
+        if (isMoving)
+        {
+            isChoosingAction = false;
+            isChoosingIngredient = false;
+            isCooking = false;
+            isThrowingFood = false;
+            canThrowFoodEventBool = false;
+        }
+
     }
     void IsChoosingIngredientEventCall()
     {
@@ -137,6 +159,7 @@ public class PlayerController : MonoBehaviour
         {
             onChoosingIngredients.Raise();
             isChoosingIngredient = true;
+            waveTime = 1;
         }
         isChoosingAction = false;
         isMoving = false;
@@ -150,6 +173,8 @@ public class PlayerController : MonoBehaviour
         {
             onChoosingCookAction.Raise();
             isChoosingAction = true;
+            waveTime = 1;
+
         }
         isMoving = false;
         isChoosingIngredient = false;
@@ -163,6 +188,8 @@ public class PlayerController : MonoBehaviour
         {
             onCooking.Raise();
             isCooking = true;
+            waveTime = 1;
+
         }
         isChoosingAction = false;
         isChoosingIngredient = false;
@@ -176,6 +203,8 @@ public class PlayerController : MonoBehaviour
         {
             onThrowingAway.Raise();
             isThrowingFood = true;
+            waveTime = 1;
+
         }
         isChoosingAction = false;
         isChoosingIngredient = false;
@@ -189,6 +218,8 @@ public class PlayerController : MonoBehaviour
         {
             onCanThrowAway.Raise();
             canThrowFoodEventBool = true;
+            waveTime = 1;
+
         }
 
         isChoosingAction = false;
@@ -372,5 +403,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    float waveTime;
+    public void OnSoulTransformed()
+    {
+        Debug.Log("Transformed");
+        waveTime = -1.5f;
+        isMoving = false;
+        onWave.Raise();
+    }
 
 }

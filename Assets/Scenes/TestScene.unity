@@ -10685,6 +10685,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7665689507496638999, guid: f99b012b83eb5b94a94d7ba2649f6f0e, type: 3}
   m_PrefabInstance: {fileID: 1300950043}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1662303324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5512151517462257996, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
+  m_PrefabInstance: {fileID: 303227736113519202}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1662303325 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3042012441689130974, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
+  m_PrefabInstance: {fileID: 303227736113519202}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662303324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce0661d7d8362f45b1d91bba18a7327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1662303327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662303324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6465a783cdbb8e74da11397efe4caf01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 11cae01bd033cc74aa9a7a2f28c573a4, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1662303325}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnSoulTransformed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1710279557
 GameObject:
   m_ObjectHideFlags: 0
@@ -13742,6 +13786,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3042012441689130974, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
+      propertyPath: onWave
+      value: 
+      objectReference: {fileID: 11400000, guid: d33bf45dd39b60045b86135885e8550a, type: 2}
     - target: {fileID: 3042012441689130974, guid: 4586a15eeb716c54a8c74a826efb1ca6, type: 3}
       propertyPath: stallPositions.Array.data[0]
       value: 
