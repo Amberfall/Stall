@@ -71,6 +71,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1541806501172942439}
+        m_TargetAssemblyTypeName: CustomerTurnOnGlow, Assembly-CSharp
+        m_MethodName: ChangeToGlowMaterial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onUnseated:
     m_PersistentCalls:
       m_Calls: []
@@ -206,6 +218,7 @@ GameObject:
   - component: {fileID: 6177831075148728065}
   - component: {fileID: 438960423015109024}
   - component: {fileID: 1957151578312447089}
+  - component: {fileID: 1541806501172942439}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -300,6 +313,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1541806501172942439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6392953381191196958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 020f5fdb6a0706b4b8e46c969d8edf0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: bd5688c44543d034fa2d35d3659cfb53, type: 2}
+  SpriteRenderer: {fileID: 438960423015109024}
 --- !u!1 &7392386357810800033
 GameObject:
   m_ObjectHideFlags: 0
