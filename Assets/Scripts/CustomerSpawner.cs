@@ -35,7 +35,7 @@ public class CustomerSpawner : MonoBehaviour
 
     void Start()
     {
-        serveTime = 200;
+        serveTime = 10;
         ResetSpawnTime();
         SpawnCustomer();
     }
@@ -52,6 +52,11 @@ public class CustomerSpawner : MonoBehaviour
             {
                 timeToSpawn -= Time.deltaTime;
             }
+        }
+
+        if(amountOfCustomers == 0)
+        {
+            SpawnCustomer();
         }
 
     }

@@ -7,6 +7,10 @@ public class Stool : MonoBehaviour
 {
     public Customer customer;
     public Image timerImage;
+    public Image background;
+
+    public Color startColor;
+    public Color endColor;
 
     public GameEvent OnLoseGame;
 
@@ -26,6 +30,7 @@ public class Stool : MonoBehaviour
                     timer = customer.timeWaiting;
                     fullTime = timer;
                     timerImage.enabled = true;
+                    background.enabled = true;
                     hasGottenTime = true;
                 }
                 if (!lostGame)
@@ -36,30 +41,37 @@ public class Stool : MonoBehaviour
                 else
                 {
                     timerImage.enabled = false;
+                    background.enabled = false;
+
                 }
             }
             else
             {
                 timerImage.enabled = false;
+                background.enabled = false;
                 hasGottenTime = false;
             }
 
         }
         else
         {
+            background.enabled = false;
             timerImage.enabled = false;
             hasGottenTime = false;
         }
 
         timerImage.fillAmount = timer / fullTime;
-
+        timerImage.color = Vector4.Lerp(endColor,startColor, (timer / fullTime));
         if(timer < 0)
         {
             OnLoseGame.Raise();
             foreach (Stool stool in FindObjectsOfType<Stool>())
             {
-                stool.lostGame = true;
                 stool.timerImage.enabled = false;
+                stool.background.enabled = false;
+                stool.lostGame = true;
+
+
             }
         }
     }
