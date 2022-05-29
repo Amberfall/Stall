@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] SpriteRenderer spriteSpriteRenderer;
 
     [SerializeField] float movementSpeed;
-    [SerializeField] float timeToThrowAwayFood;
-    float throwTimer;
+    public float timeToThrowAwayFood;
+    [HideInInspector] public float throwTimer;
 
     [SerializeField] List<Transform> stallPositions = new List<Transform>();
 

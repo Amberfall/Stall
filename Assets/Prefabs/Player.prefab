@@ -296,6 +296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7021153429203306797}
   - component: {fileID: 3042012441689130974}
+  - component: {fileID: 1662303327}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -340,16 +341,45 @@ MonoBehaviour:
   onStoppedMoving: {fileID: 11400000, guid: af8c621d73f405949bcb6e5b243dc1b6, type: 2}
   onStartMoving: {fileID: 11400000, guid: 233f2e262db653743b8cde0fdcab4bce, type: 2}
   onFailedArrowCooking: {fileID: 11400000, guid: 7cd6716150365e44797ce71160071419, type: 2}
-  onWave: {fileID: 0}
+  onWave: {fileID: 11400000, guid: d33bf45dd39b60045b86135885e8550a, type: 2}
   spriteSpriteRenderer: {fileID: 244082892605926356}
   movementSpeed: 10
   timeToThrowAwayFood: 1
+  throwTimer: 0
   stallPositions:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   stallInt: 0
   playerState: 0
+--- !u!114 &1662303327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512151517462257996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6465a783cdbb8e74da11397efe4caf01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 11cae01bd033cc74aa9a7a2f28c573a4, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3042012441689130974}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnSoulTransformed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5818818883313595259
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +390,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7932601475772656270}
   - component: {fileID: 7256128817051104322}
+  - component: {fileID: 1838749731}
   m_Layer: 0
   m_Name: NonCookEventListener
   m_TagString: Untagged
@@ -395,6 +426,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: 0b38dba5ac44b1f4b8c7fe8030c23607, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 303227736113519204}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Idle_R
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1838749731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5818818883313595259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6465a783cdbb8e74da11397efe4caf01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 430e314b3abebb04da3059999f3bb50e, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:

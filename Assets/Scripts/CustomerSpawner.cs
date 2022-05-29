@@ -35,7 +35,7 @@ public class CustomerSpawner : MonoBehaviour
 
     void Start()
     {
-        serveTime = 10;
+        serveTime = 200;
         ResetSpawnTime();
         SpawnCustomer();
     }
