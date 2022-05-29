@@ -17,6 +17,6 @@ public class ThrowingFoodBar : MonoBehaviour
 
     private void Update()
     {
-        theImage.fillAmount = -player.throwTimer / -player.timeToThrowAwayFood;
+        theImage.fillAmount = player.throwTimer / player.timeToThrowAwayFood;
     }
 }
