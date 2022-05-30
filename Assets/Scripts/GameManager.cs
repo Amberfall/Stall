@@ -8,10 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public GameObject pauseMenu; 
 
-    void Update()
-    {
-        
-    }
     public void ReloadScene()
     {
         Time.timeScale = 1;
@@ -33,5 +29,9 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
+    }
+    public void ReturnToMenuAfterSeconds(float seconds)
+    {
+        Invoke("ReturnToMainMenu", seconds);
     }
 }
