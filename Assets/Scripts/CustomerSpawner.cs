@@ -10,7 +10,6 @@ public class CustomerSpawner : MonoBehaviour
     public int secondLanternCustomers;
     public int thirdLanternCustomers;
 
-    [SerializeField] GameEvent OnWonGame;
     [SerializeField] GameEvent OnFirstLanternLit;
     [SerializeField] GameEvent OnSecondLanternLit;
     [SerializeField] GameEvent OnThirdLanternLit;
@@ -30,8 +29,15 @@ public class CustomerSpawner : MonoBehaviour
 
     public int amountOfCustomers;
 
+    GoldSystem goldSystem;
+
 
     float serveTime;
+
+    private void Awake()
+    {
+        goldSystem = FindObjectOfType<GoldSystem>();
+    }
 
     void Start()
     {
@@ -65,12 +71,69 @@ public class CustomerSpawner : MonoBehaviour
     {
         if(amountOfCustomers < 6)
         {
-            GameObject instantiatedObject;
-            int randomIndex = Random.Range(0, randomSpawnPositions.Count);
-            instantiatedObject = Instantiate(ChooseRandomCustomer(), randomSpawnPositions[randomIndex].position, Quaternion.identity);
-            instantiatedObject.GetComponent<Customer>().spawnPos = randomSpawnPositions[randomIndex].position;
-            instantiatedObject.GetComponent<Customer>().timeWaiting = serveTime;
-            amountOfCustomers++;
+
+
+            if (goldSystem.totalGoldHad <= 20)
+            {
+                Debug.Log("Eggspawn");
+                GameObject instantiatedObject;
+                int randomSoulIndex = 0;
+                int randomIndex = Random.Range(0, randomSpawnPositions.Count);
+                instantiatedObject = Instantiate(ChooseRandomCustomer(randomSoulIndex), randomSpawnPositions[randomIndex].position, Quaternion.identity);
+                instantiatedObject.GetComponent<Customer>().spawnPos = randomSpawnPositions[randomIndex].position;
+                instantiatedObject.GetComponent<Customer>().timeWaiting = serveTime;
+                amountOfCustomers++;
+            }
+
+            if (goldSystem.totalGoldHad > 20 && goldSystem.totalGoldHad <= 50)
+            {
+                GameObject instantiatedObject;
+                int randomSoulIndex = Random.Range(1, 2);
+                Debug.Log(randomSoulIndex);
+                int randomIndex = Random.Range(0, randomSpawnPositions.Count);
+                instantiatedObject = Instantiate(ChooseRandomCustomer(randomSoulIndex), randomSpawnPositions[randomIndex].position, Quaternion.identity);
+                instantiatedObject.GetComponent<Customer>().spawnPos = randomSpawnPositions[randomIndex].position;
+                instantiatedObject.GetComponent<Customer>().timeWaiting = serveTime;
+                amountOfCustomers++;
+            }
+
+            if (goldSystem.totalGoldHad > 50 && goldSystem.totalGoldHad <= 70)
+            {
+                GameObject instantiatedObject;
+                int randomSoulIndex = Random.Range(0, 3);
+                int randomIndex = Random.Range(0, randomSpawnPositions.Count);
+                instantiatedObject = Instantiate(ChooseRandomCustomer(randomSoulIndex), randomSpawnPositions[randomIndex].position, Quaternion.identity);
+                instantiatedObject.GetComponent<Customer>().spawnPos = randomSpawnPositions[randomIndex].position;
+                instantiatedObject.GetComponent<Customer>().timeWaiting = serveTime;
+                amountOfCustomers++;
+            }
+
+            if (goldSystem.totalGoldHad > 70 && goldSystem.totalGoldHad <= 90)
+            {
+                GameObject instantiatedObject;
+                int randomSoulIndex = Random.Range(0, 4);
+                int randomIndex = Random.Range(0, randomSpawnPositions.Count);
+                instantiatedObject = Instantiate(ChooseRandomCustomer(randomSoulIndex), randomSpawnPositions[randomIndex].position, Quaternion.identity);
+                instantiatedObject.GetComponent<Customer>().spawnPos = randomSpawnPositions[randomIndex].position;
+                instantiatedObject.GetComponent<Customer>().timeWaiting = serveTime;
+                amountOfCustomers++;
+            }
+
+
+
+            if (goldSystem.totalGoldHad > 90)
+            {
+                GameObject instantiatedObject;
+                int randomSoulIndex = Random.Range(0, customers.Count);
+                int randomIndex = Random.Range(0, randomSpawnPositions.Count);
+                instantiatedObject = Instantiate(ChooseRandomCustomer(randomSoulIndex), randomSpawnPositions[randomIndex].position, Quaternion.identity);
+                instantiatedObject.GetComponent<Customer>().spawnPos = randomSpawnPositions[randomIndex].position;
+                instantiatedObject.GetComponent<Customer>().timeWaiting = serveTime;
+                amountOfCustomers++;
+            }
+
+
+
         }
 
     }
@@ -86,10 +149,9 @@ public class CustomerSpawner : MonoBehaviour
         timeToSpawn = currentSpawnDifficulty;
     }
 
-    GameObject ChooseRandomCustomer()
+    GameObject ChooseRandomCustomer(int maxRange)
     {
-        int randomIndex = Random.Range(0, customers.Count);
-        return customers[randomIndex];
+        return customers[maxRange];
         
     }
 
@@ -116,7 +178,6 @@ public class CustomerSpawner : MonoBehaviour
         if(customersFed == thirdLanternCustomers)
         {
             OnThirdLanternLit.Raise();
-            OnWonGame.Raise();
         }
 
         IncreaseSpawning(3, 30, 180);
