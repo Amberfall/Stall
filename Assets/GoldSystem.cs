@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class GoldSystem : MonoBehaviour
 {
 
@@ -24,7 +24,7 @@ public class GoldSystem : MonoBehaviour
 
     public int totalGoldHad;
 
-
+    public UnityEvent onBuyRecipe;
     public void EarnGoldFromCustomer()
     {
         totalGoldHad += 10;
@@ -47,6 +47,7 @@ public class GoldSystem : MonoBehaviour
                     goldText.SetGoldTo(currentGold);
                     recipeButton.price = 20;
                     recipeButton.theText.text = "Buy Recipe " + recipeButton.price.ToString() + " G";
+                    onBuyRecipe.Invoke();
 
                 }
 
@@ -56,6 +57,8 @@ public class GoldSystem : MonoBehaviour
                     goldText.SetGoldTo(currentGold);
                     recipeButton.price = 20;
                     recipeButton.theText.text = "Buy Recipe " + recipeButton.price.ToString() + " G";
+                    onBuyRecipe.Invoke();
+
 
                 }
 
@@ -65,6 +68,8 @@ public class GoldSystem : MonoBehaviour
                     goldText.SetGoldTo(currentGold);
                     recipeButton.price = 20;
                     recipeButton.theText.text = "Buy Recipe " + recipeButton.price.ToString() + " G";
+                    onBuyRecipe.Invoke();
+
 
                 }
 
@@ -74,6 +79,8 @@ public class GoldSystem : MonoBehaviour
                     goldText.SetGoldTo(currentGold);
                     recipeButton.price = 20;
                     recipeButton.theText.text = "Buy Recipe " + recipeButton.price.ToString() + " G";
+                    onBuyRecipe.Invoke();
+
                     transformButton.SetActive(true);
 
 
