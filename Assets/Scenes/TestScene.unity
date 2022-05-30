@@ -1288,9 +1288,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9940ebee9efede94c8b1f917cb06a7a9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 942c90ffa9f376c41b7ee76df73b9201, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.017
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1631,9 +1631,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9940ebee9efede94c8b1f917cb06a7a9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 942c90ffa9f376c41b7ee76df73b9201, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.017
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1802,7 +1802,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 611102957788403170, guid: 8d81037a7abfdb945b35f07ee9e8001d, type: 3}
       propertyPath: m_InitialState
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 611102957788403170, guid: 8d81037a7abfdb945b35f07ee9e8001d, type: 3}
       propertyPath: m_SceneBindings.Array.size
@@ -18893,7 +18893,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 70e4a82643f266f46b492dc643fc322b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0
