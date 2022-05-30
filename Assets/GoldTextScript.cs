@@ -22,7 +22,7 @@ public class GoldTextScript : MonoBehaviour
 
     private void Update()
     {
-        theText.fontSize = Mathf.SmoothDamp(theText.fontSize, 30, ref refVelo, 10 * Time.deltaTime);
+        theText.fontSize = Mathf.SmoothDamp(theText.fontSize, 30, ref refVelo, 30 * Time.deltaTime);
     }
 
 }

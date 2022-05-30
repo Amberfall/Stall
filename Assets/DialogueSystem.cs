@@ -92,6 +92,7 @@ public class DialogueSystem : MonoBehaviour
                 {
                     texts[displayNum].text = null;
                     textBoxes[displayNum].SetActive(false);
+                    hasShownedHint = false;
 
                     if (displayNumber == 2)
                     {
