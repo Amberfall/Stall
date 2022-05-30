@@ -16,64 +16,70 @@ public class Stool : MonoBehaviour
 
     bool lostGame;
 
+    bool wonGame;
+
     float timer;
     bool hasGottenTime;
     float fullTime;
     private void Update()
     {
-        if(customer != null)
+        if (!wonGame)
         {
-            if(customer.stateManager.currentState == customer.stateManager.SeatedState)
+            if (customer != null)
             {
-                if (!hasGottenTime)
+                if (customer.stateManager.currentState == customer.stateManager.SeatedState)
                 {
-                    timer = customer.timeWaiting;
-                    fullTime = timer;
-                    timerImage.enabled = true;
-                    background.enabled = true;
-                    hasGottenTime = true;
-                }
-                if (!lostGame)
-                {
-                    timer -= Time.deltaTime;
+                    if (!hasGottenTime)
+                    {
+                        timer = customer.timeWaiting;
+                        fullTime = timer;
+                        timerImage.enabled = true;
+                        background.enabled = true;
+                        hasGottenTime = true;
+                    }
+                    if (!lostGame)
+                    {
+                        timer -= Time.deltaTime;
 
+                    }
+                    else
+                    {
+                        timerImage.enabled = false;
+                        background.enabled = false;
+
+                    }
                 }
                 else
                 {
                     timerImage.enabled = false;
                     background.enabled = false;
-
+                    hasGottenTime = false;
                 }
+
             }
             else
             {
-                timerImage.enabled = false;
                 background.enabled = false;
+                timerImage.enabled = false;
                 hasGottenTime = false;
             }
 
-        }
-        else
-        {
-            background.enabled = false;
-            timerImage.enabled = false;
-            hasGottenTime = false;
-        }
-
-        timerImage.fillAmount = timer / fullTime;
-        timerImage.color = Vector4.Lerp(endColor,startColor, (timer / fullTime));
-        if(timer < 0)
-        {
-            OnLoseGame.Raise();
-            foreach (Stool stool in FindObjectsOfType<Stool>())
+            timerImage.fillAmount = timer / fullTime;
+            timerImage.color = Vector4.Lerp(endColor, startColor, (timer / fullTime));
+            if (timer < 0)
             {
-                stool.timerImage.enabled = false;
-                stool.background.enabled = false;
-                stool.lostGame = true;
+                OnLoseGame.Raise();
+                foreach (Stool stool in FindObjectsOfType<Stool>())
+                {
+                    stool.timerImage.enabled = false;
+                    stool.background.enabled = false;
+                    stool.lostGame = true;
 
 
+                }
             }
         }
+
     }
 
     public bool IsOccupied()
@@ -96,5 +102,19 @@ public class Stool : MonoBehaviour
     public void RemoveCustomer()
     {
         customer = null;
+    }
+
+
+    public void WonTheGame()
+    {
+        wonGame = true;
+
+        foreach (Stool stool in FindObjectsOfType<Stool>())
+        {
+            stool.timerImage.enabled = false;
+            stool.background.enabled = false;
+
+        }
+
     }
 }

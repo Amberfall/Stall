@@ -15,7 +15,7 @@ public class GoldTextScript : MonoBehaviour
     public void SetGoldTo(float amount)
     {
         theText.text = amount.ToString() + " G";
-        theText.fontSize = 60;
+        theText.fontSize = 50;
     }
 
     float refVelo;
